@@ -2,7 +2,9 @@
 
 uses
   CoreLocation,
-  Foundation, Moshine.Api.Weather.Models.WeatherUnderground;
+  Foundation,
+  Moshine.Api.Weather.Models,
+  Moshine.Api.Weather.Models.WeatherUnderground;
 
 type
 
