@@ -19,6 +19,7 @@ type
     property WindSpeed:Integer;
     property WindSpeedGusting:Integer;
     property WindAsString:String;
+    property ShortWindAsString:String;
 
   end;
 

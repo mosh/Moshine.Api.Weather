@@ -42,12 +42,17 @@ type
       if(foundConditions.Observation.WindSpeedGusting > 0) then
       begin
         foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Gusting to %d Knots',
-        foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
+          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
+        foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Gusting %d Knts',
+          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
 
       end
       else
       begin
-        foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Knots',foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
+        foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Knots',
+          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
+        foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Knts',
+          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
       end;
 
 
