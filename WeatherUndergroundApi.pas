@@ -4,7 +4,7 @@ uses
   CoreLocation,
   Foundation,
   Moshine.Api.Weather.Models,
-  Moshine.Api.Weather.Models.WeatherUnderground;
+  Moshine.Api.Weather.Models.WeatherUnderground, RemObjects.Elements.RTL;
 
 type
 
@@ -23,7 +23,7 @@ type
       var foundConditions := new Conditions;
       var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
 
-      var aUrl := URL.UrlWithString(apiUrl);
+      var aUrl := Url.UrlWithString(apiUrl);
       var aRequest := new HttpRequest(aUrl);
       var response := Http.GetString(nil, aRequest);
       var serializer := new JsonDeserializer(response);
@@ -69,7 +69,7 @@ type
       var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/geolookup/q/%.04f,%.04f.json',_apiKey,
         currentLocation.latitude,currentLocation.longitude);
 
-      var aUrl := URL.UrlWithString(apiUrl);
+      var aUrl := Url.UrlWithString(apiUrl);
       var aRequest := new HttpRequest(aUrl);
       var response := Http.GetString(nil, aRequest);
       var serializer := new JsonDeserializer(response);
