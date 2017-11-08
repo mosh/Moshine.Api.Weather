@@ -37,7 +37,8 @@ type
       foundConditions.Observation.Temperature := (currentObservation.Item['temp_c'] as JsonIntegerValue).IntegerValue;
       foundConditions.Observation.WindDegress := (currentObservation.Item['wind_degrees'] as JsonIntegerValue).IntegerValue;
       foundConditions.Observation.WindSpeed := Convert.ToInt32((currentObservation.Item['wind_mph'] as JsonIntegerValue).IntegerValue * WeatherConstants.knotsPerMph);
-      foundConditions.Observation.WindSpeedGusting := Convert.ToInt32(Convert.ToInt32((currentObservation.Item['wind_gust_mph'] as JsonStringValue).StringValue) * WeatherConstants.knotsPerMph);
+
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation,'wind_gust_mph') * WeatherConstants.knotsPerMph);
 
       if(foundConditions.Observation.WindSpeedGusting > 0) then
       begin
@@ -52,12 +53,25 @@ type
         foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Knots',
           foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
         foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Knts',
-          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
+          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
       end;
 
 
 
       exit foundConditions;
+    end;
+
+    method AsInteger(parentObj:JsonObject; elementName:String):Integer;
+    begin
+      var obj := parentObj.Item[elementName];
+
+      if (obj is JsonIntegerValue) then
+      begin
+        exit (obj as JsonIntegerValue).IntegerValue;
+      end;
+
+      exit Convert.ToInt32((obj as JsonStringValue).StringValue);
+
     end;
 
 
