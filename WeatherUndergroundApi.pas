@@ -41,24 +41,28 @@ type
       _proxy := new WeatherUndergroundProxy(_apiKey);
     end;
 
-    method conditionsForName(name:String):Conditions;
+    method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:NSDictionary);
     begin
-      var foundConditions := new Conditions;
+      var currentObservation := someDictionary.valueForKey('current_observation');
+      foundConditions.Observation.Weather := currentObservation.valueForKey('weather') as NSString;
+      foundConditions.Observation.WindDirection := currentObservation.valueForKey('wind_dir') as NSString;
 
-      /*
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
-      var aUrl := Url.UrlWithString(apiUrl);
-      var aRequest := new HttpRequest(aUrl);
-      var response := Http.GetString(nil, aRequest);
-      */
+      foundConditions.Observation.Temperature := currentObservation.valueForKey('temp_c') as NSInteger;
+      foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as NSInteger;
+      foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as NSInteger * WeatherConstants.knotsPerMph);
 
-      var response := _proxy.conditionsForName(name);
-      /*
-      var serializer := new JsonDeserializer(response);
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
+
+      fillWindAsString(foundConditions);
+
+    end;
+
+    method populateConditions(foundConditions:Conditions) fromString(someString:String);
+    begin
+      var serializer := new JsonDeserializer(someString);
       var node := serializer.Deserialize;
 
       var currentObservation := node.Item['current_observation'] as JsonObject;
-
 
       foundConditions.Observation.Weather := (currentObservation.Item['weather'] as JsonStringValue).StringValue;
       foundConditions.Observation.WindDirection := (currentObservation.Item['wind_dir'] as JsonStringValue).StringValue;
@@ -66,8 +70,15 @@ type
       foundConditions.Observation.WindDegress := (currentObservation.Item['wind_degrees'] as JsonIntegerValue).IntegerValue;
       foundConditions.Observation.WindSpeed := Convert.ToInt32((currentObservation.Item['wind_mph'] as JsonIntegerValue).IntegerValue * WeatherConstants.knotsPerMph);
 
-      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation,'wind_gust_mph') * WeatherConstants.knotsPerMph);
+      var value := AsInteger('wind_gust_mph') fromJsonObject(currentObservation);
 
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(value * WeatherConstants.knotsPerMph);
+
+      fillWindAsString(foundConditions);
+    end;
+
+    method fillWindAsString(foundConditions:Conditions);
+    begin
       if(foundConditions.Observation.WindSpeedGusting > 0) then
       begin
         foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Gusting to %d Knots',
@@ -83,13 +94,39 @@ type
         foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Knts',
           foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
       end;
+
+    end;
+
+    method conditionsForName(name:String):Conditions;
+    begin
+      var foundConditions := new Conditions;
+
+      /*
+      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
+      var aUrl := Url.UrlWithString(apiUrl);
+      var aRequest := new HttpRequest(aUrl);
+      var response := Http.GetString(nil, aRequest);
       */
 
+      var response := _proxy.conditionsForName(name);
+
+      populateConditions(foundConditions) fromDictionary(response);
 
       exit foundConditions;
     end;
 
-    method AsInteger(parentObj:JsonObject; elementName:String):Integer;
+    method AsInteger(obj:NSObject):NSInteger;
+    begin
+
+      if(obj is NSInteger)then
+      begin
+        exit obj as NSInteger;
+      end;
+      exit Convert.ToInt32(obj as NSInteger);
+
+    end;
+
+    method AsInteger(elementName:String) fromJsonObject(parentObj:JsonObject):Integer;
     begin
       var obj := parentObj.Item[elementName];
 
