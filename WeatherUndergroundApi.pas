@@ -4,28 +4,56 @@ uses
   CoreLocation,
   Foundation,
   Moshine.Api.Weather.Models,
-  Moshine.Api.Weather.Models.WeatherUnderground, RemObjects.Elements.RTL;
+  Moshine.Api.Weather.Models.WeatherUnderground,
+  Moshine.Foundation.Web,
+  RemObjects.Elements.RTL;
 
 type
 
-  WeatherUndergroundApi = public class
+  WeatherUndergroundProxy = public class(WebProxy)
+  private
   private
     _apiKey:String;
-  protected
+
   public
     constructor(apiKey:String);
     begin
       _apiKey := apiKey;
     end;
 
+    method conditionsForName(name:String):NSDictionary;
+    begin
+        var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
+        exit WebRequest<NSDictionary>('GET',apiUrl,false);
+    end;
+
+  end;
+
+  WeatherUndergroundApi = public class
+  private
+    _apiKey:String;
+    _proxy:WeatherUndergroundProxy;
+  protected
+  public
+    constructor(apiKey:String);
+    begin
+      _apiKey := apiKey;
+      _proxy := new WeatherUndergroundProxy(_apiKey);
+    end;
+
     method conditionsForName(name:String):Conditions;
     begin
       var foundConditions := new Conditions;
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
 
+      /*
+      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
       var aUrl := Url.UrlWithString(apiUrl);
       var aRequest := new HttpRequest(aUrl);
       var response := Http.GetString(nil, aRequest);
+      */
+
+      var response := _proxy.conditionsForName(name);
+      /*
       var serializer := new JsonDeserializer(response);
       var node := serializer.Deserialize;
 
@@ -55,7 +83,7 @@ type
         foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Knts',
           foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
       end;
-
+      */
 
 
       exit foundConditions;
