@@ -33,87 +33,6 @@ type
   private
     _apiKey:String;
     _proxy:WeatherUndergroundProxy;
-  protected
-  public
-    constructor(apiKey:String);
-    begin
-      _apiKey := apiKey;
-      _proxy := new WeatherUndergroundProxy(_apiKey);
-    end;
-
-    method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:NSDictionary);
-    begin
-      var currentObservation := someDictionary.valueForKey('current_observation');
-      foundConditions.Observation.Weather := currentObservation.valueForKey('weather') as NSString;
-      foundConditions.Observation.WindDirection := currentObservation.valueForKey('wind_dir') as NSString;
-
-      foundConditions.Observation.Temperature := currentObservation.valueForKey('temp_c') as NSInteger;
-      foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as NSInteger;
-      foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as NSInteger * WeatherConstants.knotsPerMph);
-
-      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
-
-      fillWindAsString(foundConditions);
-
-    end;
-
-    method populateConditions(foundConditions:Conditions) fromString(someString:String);
-    begin
-      var serializer := new JsonDeserializer(someString);
-      var node := serializer.Deserialize;
-
-      var currentObservation := node.Item['current_observation'] as JsonObject;
-
-      foundConditions.Observation.Weather := (currentObservation.Item['weather'] as JsonStringValue).StringValue;
-      foundConditions.Observation.WindDirection := (currentObservation.Item['wind_dir'] as JsonStringValue).StringValue;
-      foundConditions.Observation.Temperature := (currentObservation.Item['temp_c'] as JsonIntegerValue).IntegerValue;
-      foundConditions.Observation.WindDegress := (currentObservation.Item['wind_degrees'] as JsonIntegerValue).IntegerValue;
-      foundConditions.Observation.WindSpeed := Convert.ToInt32((currentObservation.Item['wind_mph'] as JsonIntegerValue).IntegerValue * WeatherConstants.knotsPerMph);
-
-      var value := AsInteger('wind_gust_mph') fromJsonObject(currentObservation);
-
-      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(value * WeatherConstants.knotsPerMph);
-
-      fillWindAsString(foundConditions);
-    end;
-
-    method fillWindAsString(foundConditions:Conditions);
-    begin
-      if(foundConditions.Observation.WindSpeedGusting > 0) then
-      begin
-        foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Gusting to %d Knots',
-          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
-        foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Gusting %d Knts',
-          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed,foundConditions.Observation.WindSpeedGusting);
-
-      end
-      else
-      begin
-        foundConditions.Observation.WindAsString := NSString.stringWithFormat('From the %@ at %d Knots',
-          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
-        foundConditions.Observation.ShortWindAsString := NSString.stringWithFormat('%@ %d Knts',
-          foundConditions.Observation.WindDirection,foundConditions.Observation.WindSpeed);
-      end;
-
-    end;
-
-    method conditionsForName(name:String):Conditions;
-    begin
-      var foundConditions := new Conditions;
-
-      /*
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
-      var aUrl := Url.UrlWithString(apiUrl);
-      var aRequest := new HttpRequest(aUrl);
-      var response := Http.GetString(nil, aRequest);
-      */
-
-      var response := _proxy.conditionsForName(name);
-
-      populateConditions(foundConditions) fromDictionary(response);
-
-      exit foundConditions;
-    end;
 
     method AsInteger(obj:NSObject):NSInteger;
     begin
@@ -139,6 +58,68 @@ type
 
     end;
 
+
+    method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:NSDictionary);
+    begin
+      var currentObservation := someDictionary.valueForKey('current_observation');
+      foundConditions.Observation.Weather := currentObservation.valueForKey('weather') as NSString;
+      foundConditions.Observation.WindDirection := currentObservation.valueForKey('wind_dir') as NSString;
+
+      foundConditions.Observation.Temperature := currentObservation.valueForKey('temp_c') as NSInteger;
+      foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as NSInteger;
+      foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as NSInteger * WeatherConstants.knotsPerMph);
+
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
+
+    end;
+
+    method populateConditions(foundConditions:Conditions) fromString(someString:String);
+    begin
+      var serializer := new JsonDeserializer(someString);
+      var node := serializer.Deserialize;
+
+      var currentObservation := node.Item['current_observation'] as JsonObject;
+
+      foundConditions.Observation.Weather := (currentObservation.Item['weather'] as JsonStringValue).StringValue;
+      foundConditions.Observation.WindDirection := (currentObservation.Item['wind_dir'] as JsonStringValue).StringValue;
+      foundConditions.Observation.Temperature := (currentObservation.Item['temp_c'] as JsonIntegerValue).IntegerValue;
+      foundConditions.Observation.WindDegress := (currentObservation.Item['wind_degrees'] as JsonIntegerValue).IntegerValue;
+      foundConditions.Observation.WindSpeed := Convert.ToInt32((currentObservation.Item['wind_mph'] as JsonIntegerValue).IntegerValue * WeatherConstants.knotsPerMph);
+
+      var value := AsInteger('wind_gust_mph') fromJsonObject(currentObservation);
+
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(value * WeatherConstants.knotsPerMph);
+
+    end;
+
+    method conditonsResponse(name:String):String;
+    begin
+      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
+      var aUrl := Url.UrlWithString(apiUrl);
+      var aRequest := new HttpRequest(aUrl);
+      exit Http.GetString(nil, aRequest);
+    end;
+
+
+  public
+
+    constructor(apiKey:String);
+    begin
+      _apiKey := apiKey;
+      _proxy := new WeatherUndergroundProxy(_apiKey);
+    end;
+
+
+    method conditionsForName(name:String):Conditions;
+    begin
+      var foundConditions := new Conditions;
+
+      var response := _proxy.conditionsForName(name);
+
+      populateConditions(foundConditions) fromDictionary(response);
+
+      exit foundConditions;
+    end;
 
     method geoLookup(currentLocation:CLLocationCoordinate2D):Location;
     begin
