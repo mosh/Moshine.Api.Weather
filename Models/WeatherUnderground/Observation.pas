@@ -26,11 +26,11 @@ type
     begin
       if(self.WindSpeedGusting > 0) then
       begin
-        exit NSString.stringWithFormat('%@ %d Gusting %d Knts', self.WindDirection,self.WindSpeed,self.WindSpeedGusting);
+        exit NSString.stringWithFormat('%@ %d G %d Kts', self.WindDirection,self.WindSpeed,self.WindSpeedGusting);
       end
       else
       begin
-        exit NSString.stringWithFormat('%@ %d Knts', self.WindDirection,self.WindSpeed);
+        exit NSString.stringWithFormat('%@ %d Kts', self.WindDirection,self.WindSpeed);
       end;
     end;
 
