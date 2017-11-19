@@ -23,6 +23,13 @@ type
         exit WebRequest<NSDictionary>('GET',apiUrl,false);
     end;
 
+    method conditionsForPersonalWeatherStation(id:String):NSDictionary;
+    begin
+        var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/pws:%@.json',_apiKey,id);
+        exit WebRequest<NSDictionary>('GET',apiUrl,false);
+    end;
+
+
   end;
 
 end.

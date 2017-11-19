@@ -44,6 +44,16 @@ type
       _proxy := new WeatherUndergroundProxy(_apiKey);
     end;
 
+    method conditionsForPersonalWeatherStation(id:String):Conditions;
+    begin
+      var foundConditions := new Conditions;
+
+      var response := _proxy.conditionsForPersonalWeatherStation(id);
+
+      _populator.populateConditions(foundConditions) fromDictionary(response);
+
+      exit foundConditions;
+    end;
 
     method conditionsForName(name:String):Conditions;
     begin
