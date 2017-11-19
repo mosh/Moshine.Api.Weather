@@ -33,6 +33,23 @@ type
 
     end;
 
+    method AsDouble(elementName:String) fromJsonObject(parentObj:JsonObject):Double;
+    begin
+      var obj := parentObj.Item[elementName];
+
+      if (obj is JsonStringValue) then
+      begin
+        exit Convert.ToDoubleInvariant((obj as JsonStringValue).StringValue);
+      end;
+
+      exit (obj as JsonFloatValue).Value;
+
+
+    end;
+
+
+
+
   public
 
     method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:NSDictionary);
@@ -75,7 +92,7 @@ type
       var node := serializer.Deserialize;
 
 
-      var location := node.Item['location'];
+      var location := node.Item['location'] as JsonObject;
 
       foundLocation.Type := (location.Item['type'] as JsonStringValue).StringValue;
       foundLocation.Country := (location.Item['country'] as JsonStringValue).StringValue;
@@ -84,8 +101,8 @@ type
       foundLocation.City := (location.Item['city'] as JsonStringValue).StringValue;
       foundLocation.TimeZoneShort := (location.Item['tz_short'] as JsonStringValue).StringValue;
       foundLocation.TimeZoneLong := (location.Item['tz_long'] as JsonStringValue).StringValue;
-      foundLocation.Latitude := Convert.ToDoubleInvariant((location.Item['lat'] as JsonStringValue).StringValue);
-      foundLocation.Longitude := Convert.ToDoubleInvariant((location.Item['lon'] as JsonStringValue).StringValue);
+      foundLocation.Latitude := AsDouble('lat') fromJsonObject(location);
+      foundLocation.Longitude := AsDouble('lon') fromJsonObject(location);
       foundLocation.Zip := (location.Item['zip'] as JsonStringValue).StringValue;
       foundLocation.Magic := (location.Item['magic'] as JsonStringValue).StringValue;
       foundLocation.wmo := (location.Item['wmo'] as JsonStringValue).StringValue;
@@ -108,8 +125,8 @@ type
               airport.ICAO := (airportStation.Item['icao'] as JsonStringValue).StringValue;
               airport.State := (airportStation.Item['state'] as JsonStringValue).StringValue;
               airport.Country := (airportStation.Item['country'] as JsonStringValue).StringValue;
-              airport.Latitude := Convert.ToDoubleInvariant((airportStation.Item['lat'] as JsonStringValue).StringValue);
-              airport.Longitude := Convert.ToDoubleInvariant((airportStation.Item['lon'] as JsonStringValue).StringValue);
+              airport.Latitude := AsDouble('lat') fromJsonObject(location);
+              airport.Longitude := AsDouble('lon') fromJsonObject(location);
 
               foundLocation.NearbyWeatherStations.add(airport);
             end;
@@ -124,7 +141,7 @@ type
         var personalStations := personals.Item['station'] as JsonArray;
         if(assigned(personalStations))then
         begin
-          for each personalStation in personalStations do
+          for each personalStation:JsonObject in personalStations do
           begin
             if((personalStation.Item['city'] as JsonStringValue).StringValue.Length>0)then
             begin
@@ -134,8 +151,8 @@ type
               personal.Neighborhood := (personalStation.Item['neighborhood'] as JsonStringValue).StringValue;
               personal.State := (personalStation.Item['state'] as JsonStringValue).StringValue;
               personal.Country := (personalStation.Item['country'] as JsonStringValue).StringValue;
-              personal.Latitude := Convert.ToDoubleInvariant((personalStation.Item['lat'] as JsonStringValue).StringValue);
-              personal.Longitude := Convert.ToDoubleInvariant((personalStation.Item['lon'] as JsonStringValue).StringValue);
+              personal.Latitude := AsDouble('lat') fromJsonObject(personalStation);
+              personal.Longitude := AsDouble('lon') fromJsonObject(personalStation);
               personal.DistanceKm := (personalStation.Item['distance_km'] as JsonIntegerValue).IntegerValue;
               personal.DistanceMiles := (personalStation.Item['distance_mi'] as JsonIntegerValue).IntegerValue;
 
