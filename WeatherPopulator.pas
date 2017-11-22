@@ -9,6 +9,17 @@ type
 
   WeatherPopulator = public class
   private
+
+    method AsDouble(obj:NSObject):Double;
+    begin
+      if(obj is Double)then
+      begin
+        exit obj as Double;
+      end;
+      exit Convert.ToDoubleInvariant((obj as String).Trim);
+
+    end;
+
     method AsInteger(obj:NSObject):NSInteger;
     begin
 
@@ -16,7 +27,7 @@ type
       begin
         exit obj as NSInteger;
       end;
-      exit Convert.ToInt32(obj as NSInteger);
+      exit Convert.ToInt32(obj as NSString);
 
     end;
 
@@ -62,7 +73,35 @@ type
       foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as NSInteger;
       foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as NSInteger * WeatherConstants.knotsPerMph);
 
-      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsInteger(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
+      foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsDouble(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
+
+      foundConditions.Observation.StationId := currentObservation.valueForKey('station_id');
+      foundConditions.Observation.ObservationTimeRfc822 := currentObservation.valueForKey('observation_time_rfc822');
+      foundConditions.Observation.ObservationEpoch := currentObservation.valueForKey('observation_epoch');
+      foundConditions.Observation.LocalTimeZoneShort := currentObservation.valueForKey('local_tz_short');
+      foundConditions.Observation.LocalTimeZoneLong := currentObservation.valueForKey('local_tz_long');
+      foundConditions.Observation.LocalTimeZoneOffset := AsDouble(currentObservation.valueForKey('local_tz_offset'));
+      foundConditions.Observation.TemperatureF := AsDouble(currentObservation.valueForKey('temp_f'));
+      foundConditions.Observation.TemperatureC := AsDouble(currentObservation.valueForKey('temp_c'));
+      foundConditions.Observation.RelativeHumidity := currentObservation.valueForKey('relative_humidity');
+      foundConditions.Observation.PressureMb := AsInteger(currentObservation.valueForKey('pressure_mb'));
+      foundConditions.Observation.PressureIn := AsDouble(currentObservation.valueForKey('pressure_in'));
+      foundConditions.Observation.PressureTrend := currentObservation.valueForKey('pressure_trend');
+      foundConditions.Observation.DewpointString := currentObservation.valueForKey('dewpoint_string');
+      foundConditions.Observation.DewpointF := AsDouble(currentObservation.valueForKey('dewpoint_f'));
+      foundConditions.Observation.DewpointC := AsDouble(currentObservation.valueForKey('dewpoint_c'));
+      foundConditions.Observation.HeatIndexString := currentObservation.valueForKey('observation_time_rfc822');
+      foundConditions.Observation.HeatIndexF := AsDouble(currentObservation.valueForKey('heat_index_f'));
+      foundConditions.Observation.HeatIndexC := AsDouble(currentObservation.valueForKey('heat_index_c'));
+      foundConditions.Observation.WindChillString := currentObservation.valueForKey('heat_index_string');
+      foundConditions.Observation.VisibilityM := AsDouble(currentObservation.valueForKey('visibility_mi'));
+      foundConditions.Observation.VisibityKm := AsDouble(currentObservation.valueForKey('visibility_km'));
+      foundConditions.Observation.Precipitation1hrString := currentObservation.valueForKey('precip_1hr_string');
+      foundConditions.Observation.Precipitation1hrInch := AsDouble(currentObservation.valueForKey('precip_1hr_in'));
+      foundConditions.Observation.Precipitation1hrMetric := AsDouble(currentObservation.valueForKey('precip_1hr_metric'));
+      foundConditions.Observation.PrecipitationTodayString := currentObservation.valueForKey('precip_today_string');
+      foundConditions.Observation.PrecipitationTodayInch := AsDouble(currentObservation.valueForKey('precip_today_in'));
+      foundConditions.Observation.PrecipitationTodayMetric := AsDouble(currentObservation.valueForKey('precip_today_metric'));
 
     end;
 

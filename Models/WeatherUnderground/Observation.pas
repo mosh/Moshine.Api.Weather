@@ -45,6 +45,35 @@ type
     property WindAsString:String read get_WindAsString;
     property ShortWindAsString:String read get_ShortWindAsString;
 
+    property StationId:String;
+    property TemperatureString:String;
+    property ObservationTimeRfc822:String;
+    property ObservationEpoch:String;
+    property LocalTimeZoneShort:String;
+    property LocalTimeZoneLong:String;
+    property LocalTimeZoneOffset:Double;
+    property TemperatureF:Double;
+    property TemperatureC:Double;
+    property RelativeHumidity:String;
+    property PressureMb:Integer;
+    property PressureIn:Double;
+    property PressureTrend:String;
+    property DewpointString:String;
+    property DewpointF:Double;
+    property DewpointC:Double;
+    property HeatIndexString:String;
+    property HeatIndexF:Double;
+    property HeatIndexC:Double;
+    property WindChillString:String;
+    property VisibilityM:Double;
+    property VisibityKm:Double;
+    property Precipitation1hrString:String;
+    property Precipitation1hrInch:Double;
+    property Precipitation1hrMetric:Double;
+    property PrecipitationTodayString:String;
+    property PrecipitationTodayInch:Double;
+    property PrecipitationTodayMetric:Double;
+
     constructor;
     begin
       self.Weather := '';
