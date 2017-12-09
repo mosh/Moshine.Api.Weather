@@ -16,7 +16,9 @@ type
       begin
         exit obj as Double;
       end;
-      exit Convert.ToDoubleInvariant((obj as String).Trim);
+
+      var value := Convert.TryToDoubleInvariant((obj as String).Trim);
+      exit iif(assigned(value), value,0);
 
     end;
 
@@ -50,16 +52,11 @@ type
 
       if (obj is JsonStringValue) then
       begin
-        exit Convert.ToDoubleInvariant((obj as JsonStringValue).StringValue);
+        var value := Convert.TryToDoubleInvariant((obj as JsonStringValue).StringValue.Trim);
+        exit iif(assigned(value), value,0);
       end;
-
       exit (obj as JsonFloatValue).Value;
-
-
     end;
-
-
-
 
   public
 
