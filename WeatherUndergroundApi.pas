@@ -46,6 +46,7 @@ type
 
     method conditionsForPersonalWeatherStation(id:String):Conditions;
     begin
+      NSLog('%@','WeatherUndergroundApi.conditionsForPersonalWeatherStation');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForPersonalWeatherStation(id);
@@ -57,6 +58,7 @@ type
 
     method conditionsForName(name:String):Conditions;
     begin
+      NSLog('%@','WeatherUndergroundApi.conditionsForName');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForName(name);
@@ -68,6 +70,7 @@ type
 
     method geoLookup(currentLocation:CLLocationCoordinate2D):Location;
     begin
+      NSLog('%@','WeatherUndergroundApi.geoLookup');
 
       var foundLocation := new Location;
 
@@ -76,7 +79,6 @@ type
       _populator.populateLocation(foundLocation) fromString(response);
 
       exit foundLocation;
-
 
     end;
   end;

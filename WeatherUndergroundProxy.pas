@@ -8,10 +8,10 @@ type
 
   WeatherUndergroundProxy = public class(WebProxy)
   private
-  private
     _apiKey:String;
 
   public
+
     constructor(apiKey:String);
     begin
       _apiKey := apiKey;
@@ -19,14 +19,16 @@ type
 
     method conditionsForName(name:String):NSDictionary;
     begin
-        var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
-        exit WebRequest<NSDictionary>('GET',apiUrl,false);
+      NSLog('%@','WeatherUndergroundProxy.conditionsForName');
+      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
+      exit WebRequest<NSDictionary>('GET',apiUrl,false);
     end;
 
     method conditionsForPersonalWeatherStation(id:String):NSDictionary;
     begin
-        var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/pws:%@.json',_apiKey,id);
-        exit WebRequest<NSDictionary>('GET',apiUrl,false);
+      NSLog('%@','WeatherUndergroundProxy.conditionsForPersonalWeatherStation');
+      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/pws:%@.json',_apiKey,id);
+      exit WebRequest<NSDictionary>('GET',apiUrl,false);
     end;
 
 
