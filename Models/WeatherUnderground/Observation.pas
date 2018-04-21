@@ -48,7 +48,8 @@ type
     property StationId:String;
     property TemperatureString:String;
     property ObservationTimeRfc822:String;
-    property ObservationEpoch:String;
+    property ObservationEpoch:Double;
+    property LocalEpoch:Double;
     property LocalTimeZoneShort:String;
     property LocalTimeZoneLong:String;
     property LocalTimeZoneOffset:Double;

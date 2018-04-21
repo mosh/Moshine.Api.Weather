@@ -74,7 +74,8 @@ type
 
       foundConditions.Observation.StationId := currentObservation.valueForKey('station_id');
       foundConditions.Observation.ObservationTimeRfc822 := currentObservation.valueForKey('observation_time_rfc822');
-      foundConditions.Observation.ObservationEpoch := currentObservation.valueForKey('observation_epoch');
+      foundConditions.Observation.ObservationEpoch := AsDouble(currentObservation.valueForKey('observation_epoch'));
+      foundConditions.Observation.LocalEpoch := AsDouble(currentObservation.valueForKey('local_epoch'));
       foundConditions.Observation.LocalTimeZoneShort := currentObservation.valueForKey('local_tz_short');
       foundConditions.Observation.LocalTimeZoneLong := currentObservation.valueForKey('local_tz_long');
       foundConditions.Observation.LocalTimeZoneOffset := AsDouble(currentObservation.valueForKey('local_tz_offset'));

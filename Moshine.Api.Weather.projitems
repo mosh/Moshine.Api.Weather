@@ -18,6 +18,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Observation.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)WeatherUndergroundProxy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)WeatherPopulator.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Station.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\PersonalStation.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\AirportStation.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
