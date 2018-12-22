@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
 uses
+  Foundation,
   MapKit;
 
 type
@@ -29,7 +30,7 @@ type
 
     method get_coordinate: CLLocationCoordinate2D;
     begin
-      exit new CLLocationCoordinate2D(Latitude := self.Latitude, Longitude := self.Longitude);
+      exit new CLLocationCoordinate2D(latitude := self.Latitude, longitude := self.Longitude);
     end;
 
   public
