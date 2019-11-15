@@ -1,0 +1,113 @@
+﻿<Settings>
+  <Setting Name="DebugPaneActiveTab" Type="Integer">0</Setting>
+  <Setting Name="SelectedNode" Type="String">file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/AerisWeatherApi.pas</Setting>
+  <Setting Name="FolderExpanded_Moshine.Api.Weather_file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/" Type="Boolean">True</Setting>
+  <Setting Name="ViewMetaData" Type="Dictionary">
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/WeatherPopulator.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">0</Setting>
+      <Setting Name="CursorY" Type="Integer">0</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">False</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/WeatherUndergroundApi.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">28</Setting>
+      <Setting Name="CursorY" Type="Integer">19</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">True</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">222.9600</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/WeatherUndergroundProxy.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">0</Setting>
+      <Setting Name="CursorY" Type="Integer">0</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">True</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/DarkSkyApi.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">0</Setting>
+      <Setting Name="CursorY" Type="Integer">29</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">True</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/AerisWeatherApi.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">118</Setting>
+      <Setting Name="CursorY" Type="Integer">21</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">True</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/Models/WeatherConstants.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">0</Setting>
+      <Setting Name="CursorY" Type="Integer">0</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">False</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/Models/Aeris/Forecast.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">35</Setting>
+      <Setting Name="CursorY" Type="Integer">0</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">-1</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">True</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+    <Setting Name="file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/Proxies/WeatherUndergroundProxy.pas" Type="Dictionary">
+      <Setting Name="CursorX" Type="Integer">0</Setting>
+      <Setting Name="CursorY" Type="Integer">0</Setting>
+      <Setting Name="SelectionStartLine" Type="Integer">-1</Setting>
+      <Setting Name="SelectionStartColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndLine" Type="Integer">0</Setting>
+      <Setting Name="SelectionEndColumn" Type="Integer">0</Setting>
+      <Setting Name="SelectionIsLinear" Type="Boolean">False</Setting>
+      <Setting Name="SelectionCursorUndecided" Type="Boolean">False</Setting>
+      <Setting Name="ScrollX" Type="Double">0.0000</Setting>
+      <Setting Name="ScrollY" Type="Double">0.0000</Setting>
+    </Setting>
+  </Setting>
+  <Setting Name="Window_X" Type="Double">323.0000</Setting>
+  <Setting Name="Window_Y" Type="Double">230.0000</Setting>
+  <Setting Name="Window_Width" Type="Double">1697.0000</Setting>
+  <Setting Name="Window_Height" Type="Double">1178.0000</Setting>
+  <Setting Name="Window_Fullscreen" Type="Boolean">False</Setting>
+  <Setting Name="FolderExpanded_Moshine.Api.Weather_file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/WeatherUndergroundApi.pas" Type="Boolean">True</Setting>
+  <Setting Name="ExplorerSplitter" Type="Double">276.0000</Setting>
+  <Setting Name="FolderExpanded_Moshine.Api.Weather_file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/Models/Aeris/" Type="Boolean">True</Setting>
+  <Setting Name="SelectedSetting_file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements" Type="String">DefaultLanguage</Setting>
+  <Setting Name="FolderExpanded_Moshine.Api.Weather_file:///D:/develop/Moshine.Api.Weather/Moshine.Api.Weather.elements_file:///D:/develop/Moshine.Api.Weather/Proxies/" Type="Boolean">True</Setting>
+</Settings>

@@ -28,7 +28,6 @@ type
       // nearestStormDistance and visibility are in miles and windSpeed is in miles per hour
       // 1 mile per hour is 0.868976 knot
 
-
       var aUrl := Url.UrlWithString(value);
 
       var aRequest := new HttpRequest(aUrl);
@@ -52,8 +51,6 @@ type
       obj.Currently.WindBearing := (currently.Item['windBearing'] as JsonIntegerValue).IntegerValue;
       obj.Currently.CloudCover := (currently.Item['cloudCover'] as JsonFloatValue).FloatValue;
       obj.Currently.Pressure := (currently.Item['pressure'] as JsonFloatValue).FloatValue;
-
-
 
       exit obj;
 

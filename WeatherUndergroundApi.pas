@@ -10,7 +10,9 @@ uses
 
 type
 
-
+  ///
+  /// Depreciated - api no longer supported
+  ///
   WeatherUndergroundApi = public class
   private
     _apiKey:String;

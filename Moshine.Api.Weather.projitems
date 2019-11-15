@@ -16,11 +16,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Conditions.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherConstants.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Observation.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)WeatherUndergroundProxy.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)WeatherPopulator.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Station.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\PersonalStation.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\AirportStation.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\WeatherPopulator.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Proxies\WeatherUndergroundProxy.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)AerisWeatherApi.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Forecast.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
