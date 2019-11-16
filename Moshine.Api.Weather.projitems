@@ -23,6 +23,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Proxies\WeatherUndergroundProxy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)AerisWeatherApi.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Forecast.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Proxies\AerisProxy.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Profile.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Location.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Period.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

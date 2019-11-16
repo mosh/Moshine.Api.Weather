@@ -1,25 +1,47 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  Moshine.Api.Models.Aeris;
+  Foundation,
+  RemObjects.Elements.RTL,
+  CoreLocation,
+  Moshine.Api.Weather.Models.Aeris;
 
 type
+
   AerisWeatherApi = public class
   private
-    const apiBase := 'https://api.aerisapi.com/';
-    clientId:String;
-    clientSecret:String;
+    property Proxy:AerisProxy;
 
   public
     constructor(clientIdValue:String; clientSecretValue:String);
     begin
-      clientId := clientIdValue;
-      clientSecret := clientSecretValue;
+      Proxy := new AerisProxy(clientIdValue, clientSecretValue);
     end;
 
-    method Forecast:Forecast;
+    method Forecast(location:CLLocationCoordinate2D):Forecast;
     begin
-      var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p=38.55,-68.31&radius=400mi';
+      var newForecast := new Forecast;
+      var values := Proxy.Forecast(location);
+      if(not assigned(values))then
+      begin
+        exit nil;
+      end;
+
+      var value := values['success'];
+
+      if((assigned(value)) and (Boolean(value)))then
+      begin
+        var response:NSArray<NSDictionary> := values['response'];
+
+        var profile:NSDictionary := response[0]['profile'];
+
+        newForecast.Profile.TimeZone := profile['tz'];
+        newForecast.Profile.ElevationFeet := profile['elevFT'];
+        newForecast.Profile.ElevationMeters := profile['elevM'];
+
+      end;
+      exit newForecast;
     end;
+
   end;
 end.
