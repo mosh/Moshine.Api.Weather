@@ -7,6 +7,7 @@ type
      property Profile:Profile := new Profile;
      property Location:Location := new Location;
      property Periods:List<Period> := new List<Period>;
+     property Interval:String;
   end;
 
 end.

@@ -5,6 +5,8 @@ type
   private
   protected
   public
+    property Longitude:Double;
+    property Lattitude:Double;
   end;
 
 end.
