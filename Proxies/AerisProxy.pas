@@ -2,6 +2,7 @@
 
 uses
   CoreLocation,
+  Foundation,
   Moshine.Foundation.Web;
 
 type

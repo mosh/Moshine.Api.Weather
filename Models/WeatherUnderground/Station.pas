@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
 uses
+  CoreLocation,
   Foundation,
   MapKit;
 
