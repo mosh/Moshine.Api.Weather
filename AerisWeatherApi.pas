@@ -3,7 +3,6 @@
 uses
   Foundation,
   RemObjects.Elements.RTL,
-  CoreLocation,
   Moshine.Api.Weather.Models.Aeris, Moshine.Api.Weather.Proxies;
 
 type
@@ -18,7 +17,7 @@ type
       Proxy := new AerisProxy(clientIdValue, clientSecretValue);
     end;
 
-    method Forecast(forecastLocation:CLLocationCoordinate2D):Forecast;
+    method Forecast(forecastLocation:Location):Forecast;
     begin
       var newForecast := new Forecast;
       var values := Proxy.Forecast(forecastLocation);

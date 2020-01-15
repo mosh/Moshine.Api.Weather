@@ -29,10 +29,9 @@ type
       exit Http.GetString(nil, aRequest);
     end;
 
-    method geoLookupResponse(currentLocation:CLLocationCoordinate2D):String;
+    method geoLookupResponse(currentLocation:Location):String;
     begin
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/geolookup/q/%.04f,%.04f.json',_apiKey,
-        currentLocation.latitude,currentLocation.longitude);
+      var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/geolookup/q/{currentLocation.Latitude},{currentLocation.Longitude}.json';
 
       var aUrl := Url.UrlWithString(apiUrl);
       var aRequest := new HttpRequest(aUrl);
@@ -50,7 +49,7 @@ type
 
     method conditionsForPersonalWeatherStation(id:String):Conditions;
     begin
-      NSLog('%@','WeatherUndergroundApi.conditionsForPersonalWeatherStation');
+      //NSLog('%@','WeatherUndergroundApi.conditionsForPersonalWeatherStation');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForPersonalWeatherStation(id);
@@ -62,7 +61,7 @@ type
 
     method conditionsForName(name:String):Conditions;
     begin
-      NSLog('%@','WeatherUndergroundApi.conditionsForName');
+      //NSLog('%@','WeatherUndergroundApi.conditionsForName');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForName(name);
@@ -72,9 +71,9 @@ type
       exit foundConditions;
     end;
 
-    method geoLookup(currentLocation:CLLocationCoordinate2D):Location;
+    method geoLookup(currentLocation:Location):Location;
     begin
-      NSLog('%@','WeatherUndergroundApi.geoLookup');
+      //NSLog('%@','WeatherUndergroundApi.geoLookup');
 
       var foundLocation := new Location;
 

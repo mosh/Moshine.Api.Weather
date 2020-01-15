@@ -19,7 +19,7 @@ type
       _apiKey := apiKey;
     end;
 
-    method GetForecast(location:CLLocationCoordinate2D):Forecast;
+    method GetForecast(location:Location):Forecast;
     begin
       var obj := new Forecast;
 

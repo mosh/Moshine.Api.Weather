@@ -3,7 +3,8 @@
 uses
   CoreLocation,
   Foundation,
-  Moshine.Foundation.Web;
+  Moshine.Foundation.Web,
+  RemObjects.Elements.RTL;
 
 type
   AerisProxy = public class(WebProxy)
@@ -20,11 +21,11 @@ type
       clientSecret := clientSecretValue;
     end;
 
-    method Forecast(location:CLLocationCoordinate2D):NSDictionary;
+    method Forecast(location:Location):ImmutableDictionary;
     begin
-      var locationString := NSString.stringWithFormat('%.04f,%.04f',location.latitude,location.longitude);
+      var locationString := $'{location.latitude},{location.longitude}');
       var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
-      exit WebRequest<NSDictionary>('GET',url,false);
+      exit WebRequest<ImmutableDictionary>('GET',url,false);
     end;
 
   end;
