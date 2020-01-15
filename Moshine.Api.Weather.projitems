@@ -19,7 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\Station.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\PersonalStation.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherUnderground\AirportStation.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\WeatherPopulator.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Proxies\WeatherUndergroundProxy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)AerisWeatherApi.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Forecast.pas" />
@@ -27,6 +26,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Profile.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Location.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Period.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\WeatherUnderground\WeatherPopulator.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Proxies\WorldWeatherOnlineProxy.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)WorldWeatherOnlineApi.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Hourly.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\MarineWeather.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Weather.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\WeatherDesc.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\MarineWeatherInput.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Data.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Request.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\WeatherIconUrl.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Astronomy.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

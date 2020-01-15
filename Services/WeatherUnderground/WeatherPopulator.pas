@@ -1,4 +1,4 @@
-﻿namespace Moshine.Api.Weather;
+﻿namespace Moshine.Api.Weather.Services.WeatherUnderground;
 
 uses
   Foundation,
@@ -165,7 +165,7 @@ type
               airport.Latitude := AsDouble('lat') fromJsonObject(location);
               airport.Longitude := AsDouble('lon') fromJsonObject(location);
 
-              foundLocation.NearbyWeatherStations.add(airport);
+              foundLocation.NearbyWeatherStations.Add(airport);
             end;
           end;
         end;
@@ -193,7 +193,7 @@ type
               personal.DistanceKm := (personalStation.Item['distance_km'] as JsonIntegerValue).IntegerValue;
               personal.DistanceMiles := (personalStation.Item['distance_mi'] as JsonIntegerValue).IntegerValue;
 
-              foundLocation.NearbyWeatherStations.add(personal);
+              foundLocation.NearbyWeatherStations.Add(personal);
             end;
           end;
         end;
