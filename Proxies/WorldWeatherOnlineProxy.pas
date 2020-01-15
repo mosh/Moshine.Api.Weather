@@ -1,7 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
-  CoreLocation;
+  CoreLocation, Moshine.Api.Weather.Models.WorldWeatherOnline;
 
 type
   WorldWeatherOnlineProxy = public class
