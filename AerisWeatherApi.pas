@@ -4,7 +4,7 @@ uses
   Foundation,
   RemObjects.Elements.RTL,
   CoreLocation,
-  Moshine.Api.Weather.Models.Aeris;
+  Moshine.Api.Weather.Models.Aeris, Moshine.Api.Weather.Proxies;
 
 type
 

@@ -5,7 +5,9 @@ uses
   Foundation,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.WeatherUnderground,
+  Moshine.Api.Weather.Services.WeatherUnderground,
   Moshine.Foundation.Web,
+  Moshine.Api.Weather.Proxies,
   RemObjects.Elements.RTL;
 
 type
