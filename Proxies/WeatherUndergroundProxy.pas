@@ -1,8 +1,11 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
+  {$IF TOFFEE}
   Foundation,
-  Moshine.Foundation.Web;
+  {$ENDIF}
+  Moshine.Foundation.Web,
+  RemObjects.Elements.RTL;
 
 type
 
@@ -17,18 +20,22 @@ type
       _apiKey := apiKey;
     end;
 
-    method conditionsForName(name:String):NSDictionary;
+    method conditionsForName(name:String):Dictionary<String,Object>;
     begin
+      {$IF TOFFEE}
       NSLog('%@','WeatherUndergroundProxy.conditionsForName');
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
-      exit WebRequest<NSDictionary>('GET',apiUrl,false);
+      {$ENDIF}
+      var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/conditions/q/{name}.json';
+      //exit WebRequest<Dictionary<String,Object>>('GET',apiUrl,false);
     end;
 
-    method conditionsForPersonalWeatherStation(id:String):NSDictionary;
+    method conditionsForPersonalWeatherStation(id:String):Dictionary<String,Object>;
     begin
+      {$IF TOFFEE}
       NSLog('%@','WeatherUndergroundProxy.conditionsForPersonalWeatherStation');
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/pws:%@.json',_apiKey,id);
-      exit WebRequest<NSDictionary>('GET',apiUrl,false);
+      {$ENDIF}
+      var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/conditions/q/pws:{id}.json';
+      //exit WebRequest<Dictionary<String,Object>>('GET',apiUrl,false);
     end;
 
 

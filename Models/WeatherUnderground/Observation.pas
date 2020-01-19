@@ -1,8 +1,5 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
-uses
-  Foundation;
-
 type
 
   Observation = public class
@@ -13,11 +10,11 @@ type
 
       if(self.WindSpeedGusting > 0) then
       begin
-        exit NSString.stringWithFormat('From the %@ at %d Gusting to %d Knots', self.WindDirection, self.WindSpeed, self.WindSpeedGusting);
+        exit $'From the {self.WindDirection} at {self.WindSpeed} Gusting to {self.WindSpeedGusting} Knots';
       end
       else
       begin
-        exit NSString.stringWithFormat('From the %@ at %d Knots', self.WindDirection,self.WindSpeed);
+        exit $'From the {self.WindDirection} at {self.WindSpeed} Knots';
       end;
 
     end;
@@ -26,11 +23,11 @@ type
     begin
       if(self.WindSpeedGusting > 0) then
       begin
-        exit NSString.stringWithFormat('%@ %d G %d Kts', self.WindDirection,self.WindSpeed,self.WindSpeedGusting);
+        exit $'{self.WindDirection} {self.WindSpeed} G {self.WindSpeedGusting} Kts';
       end
       else
       begin
-        exit NSString.stringWithFormat('%@ %d Kts', self.WindDirection,self.WindSpeed);
+        exit $'{self.WindDirection} {self.WindSpeed} Kts';
       end;
     end;
 

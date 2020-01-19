@@ -1,37 +1,43 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
 uses
+{$IF TOFFEE}
   CoreLocation,
   Foundation,
-  MapKit;
+  MapKit,
+{$ENDIF}
+  Moshine.Api.Weather.Models;
 
 type
-  Station = public abstract class(IMKAnnotation)
+
+
+
+  Station = public abstract class({$IF TOFFEE}IMKAnnotation{$ENDIF})
   protected
 
-    method set_title(value: nullable NSString); abstract;
+    method set_title(value: nullable String); abstract;
 
-    method get_title: nullable NSString; abstract;
+    method get_title: nullable String; abstract;
 
-    method set_subtitle(value:nullable NSString);
+    method set_subtitle(value:nullable String);
     begin
     end;
 
-    method get_subtitle: nullable NSString;
+    method get_subtitle: nullable String;
     begin
       exit '';
     end;
 
 
-    method set_coordinate(value: CLLocationCoordinate2D);
+    method set_coordinate(value: LocationCoordinate2D);
     begin
-      self.Latitude := value.latitude;
-      self.Longitude := value.longitude;
+      self.Latitude := value.Latitude;
+      self.Longitude := value.Longitude;
     end;
 
-    method get_coordinate: CLLocationCoordinate2D;
+    method get_coordinate: LocationCoordinate2D;
     begin
-      exit new CLLocationCoordinate2D(latitude := self.Latitude, longitude := self.Longitude);
+      //exit new LocationCoordinate2D(Latitude := self.Latitude, Longitude := self.Longitude);
     end;
 
   public
@@ -42,9 +48,9 @@ type
     property Longitude:Double;
 
     // IMKAnnotation
-    property coordinate: CLLocationCoordinate2D read get_coordinate write set_coordinate;
-    property title: nullable NSString read get_title write set_title;
-    property subtitle: nullable NSString read get_subtitle write set_subtitle;
+    property coordinate: LocationCoordinate2D read get_coordinate write set_coordinate;
+    property title: nullable String read get_title write set_title;
+    property subtitle: nullable String read get_subtitle write set_subtitle;
     // IMKAnnotation
 
   end;

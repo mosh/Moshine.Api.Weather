@@ -1,7 +1,6 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
 uses
-  MapKit,
   RemObjects.Elements.RTL;
 
 type

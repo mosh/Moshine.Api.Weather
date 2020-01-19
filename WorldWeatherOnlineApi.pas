@@ -16,10 +16,12 @@ type
       proxy := new WorldWeatherOnlineProxy(apiKey);
     end;
 
-    method Forecast(forecastLocation:Location):MarineWeather;
+    method Forecast(forecastLocation:LocationCoordinate2D):MarineWeather;
     begin
 
       var weather := new MarineWeather;
+
+      var response := proxy.GetMarineForecast(forecastLocation);
 
       exit weather;
 

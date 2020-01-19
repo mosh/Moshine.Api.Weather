@@ -1,9 +1,8 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
-  CoreLocation,
-  Foundation,
   Moshine.Foundation.Web,
+  Moshine.Api.Weather.Models,
   RemObjects.Elements.RTL;
 
 type
@@ -21,11 +20,11 @@ type
       clientSecret := clientSecretValue;
     end;
 
-    method Forecast(location:Location):ImmutableDictionary;
+    method Forecast(location: LocationCoordinate2D):ImmutableDictionary<String,Object>;
     begin
-      var locationString := $'{location.latitude},{location.longitude}');
+      var locationString := $'{location.Latitude},{location.Longitude}';
       var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
-      exit WebRequest<ImmutableDictionary>('GET',url,false);
+      //exit WebRequest<ImmutableDictionary<String,Object>>('GET',url,false);
     end;
 
   end;

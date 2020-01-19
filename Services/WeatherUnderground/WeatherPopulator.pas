@@ -1,7 +1,6 @@
 ﻿namespace Moshine.Api.Weather.Services.WeatherUnderground;
 
 uses
-  Foundation,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.WeatherUnderground, RemObjects.Elements.RTL;
 
@@ -10,7 +9,7 @@ type
   WeatherPopulator = public class
   private
 
-    method AsDouble(obj:NSObject):Double;
+    method AsDouble(obj:Object):Double;
     begin
       if(obj is Double)then
       begin
@@ -22,14 +21,14 @@ type
 
     end;
 
-    method AsInteger(obj:NSObject):NSInteger;
+    method AsInteger(obj:Object):Integer;
     begin
 
-      if(obj is NSInteger)then
+      if(obj is Integer)then
       begin
-        exit obj as NSInteger;
+        exit obj as Integer;
       end;
-      exit Convert.ToInt32(obj as NSString);
+      exit Convert.ToInt32(obj as String);
 
     end;
 
@@ -60,15 +59,16 @@ type
 
   public
 
-    method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:NSDictionary);
+    method populateConditions(foundConditions:Conditions) fromDictionary(someDictionary:Dictionary<String,Object>);
     begin
+      /*
       var currentObservation := someDictionary.valueForKey('current_observation');
-      foundConditions.Observation.Weather := currentObservation.valueForKey('weather') as NSString;
-      foundConditions.Observation.WindDirection := currentObservation.valueForKey('wind_dir') as NSString;
+      foundConditions.Observation.Weather := currentObservation.valueForKey('weather') as String;
+      foundConditions.Observation.WindDirection := currentObservation.valueForKey('wind_dir') as String;
 
-      foundConditions.Observation.Temperature := currentObservation.valueForKey('temp_c') as NSInteger;
-      foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as NSInteger;
-      foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as NSInteger * WeatherConstants.knotsPerMph);
+      foundConditions.Observation.Temperature := currentObservation.valueForKey('temp_c') as Integer;
+      foundConditions.Observation.WindDegress := currentObservation.valueForKey('wind_degrees') as Integer;
+      foundConditions.Observation.WindSpeed := Convert.ToInt32(currentObservation.valueForKey('wind_mph') as Integer * WeatherConstants.knotsPerMph);
 
       foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(AsDouble(currentObservation.valueForKey('wind_gust_mph')) * WeatherConstants.knotsPerMph);
 
@@ -100,11 +100,12 @@ type
       foundConditions.Observation.PrecipitationTodayString := currentObservation.valueForKey('precip_today_string');
       foundConditions.Observation.PrecipitationTodayInch := AsDouble(currentObservation.valueForKey('precip_today_in'));
       foundConditions.Observation.PrecipitationTodayMetric := AsDouble(currentObservation.valueForKey('precip_today_metric'));
-
+      */
     end;
 
     method populateConditions(foundConditions:Conditions) fromString(someString:String);
     begin
+      /*
       var serializer := new JsonDeserializer(someString);
       var node := serializer.Deserialize;
 
@@ -119,12 +120,14 @@ type
       var value := AsInteger('wind_gust_mph') fromJsonObject(currentObservation);
 
       foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(value * WeatherConstants.knotsPerMph);
+      */
 
     end;
 
 
     method populateLocation(foundLocation:Location) fromString(someString:String);
     begin
+      /*
       var serializer := new JsonDeserializer(someString);
       var node := serializer.Deserialize;
 
@@ -199,8 +202,9 @@ type
         end;
       end;
 
-
+    */
     end;
+
   end;
 
 end.

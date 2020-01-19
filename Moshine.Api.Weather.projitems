@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Forecast.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Proxies\AerisProxy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Profile.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Location.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Period.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\WeatherUnderground\WeatherPopulator.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Proxies\WorldWeatherOnlineProxy.pas" />
@@ -38,7 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Request.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\WeatherIconUrl.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Astronomy.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Location.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2D.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

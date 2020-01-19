@@ -1,7 +1,12 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
+{$IF TOFFEE}
 uses
   Foundation;
+{$ELSE}
+{$ENDIF}
+
+
 
 type
 

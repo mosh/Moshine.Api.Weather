@@ -1,8 +1,6 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  CoreLocation,
-  Foundation,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.WeatherUnderground,
   Moshine.Api.Weather.Services.WeatherUnderground,
@@ -23,7 +21,7 @@ type
 
     method conditionsResponse(name:String):String;
     begin
-      var apiUrl := NSString.stringWithFormat('https://api.wunderground.com/api/%@/conditions/q/%@.json',_apiKey,name);
+      var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/conditions/q/{name}.json';
       var aUrl := Url.UrlWithString(apiUrl);
       var aRequest := new HttpRequest(aUrl);
       exit Http.GetString(nil, aRequest);

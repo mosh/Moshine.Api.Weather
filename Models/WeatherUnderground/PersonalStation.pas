@@ -1,18 +1,16 @@
 ﻿namespace Moshine.Api.Weather.Models.WeatherUnderground;
 
-uses
-  Foundation;
 
 type
 
   PersonalStation = public class(Station)
   protected
 
-    method set_title(value: nullable NSString); override;
+    method set_title(value: nullable String); override;
     begin
     end;
 
-    method get_title: nullable NSString; override;
+    method get_title: nullable String; override;
     begin
       exit self.Neighborhood;
     end;

@@ -1,9 +1,10 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  Foundation,
   RemObjects.Elements.RTL,
-  Moshine.Api.Weather.Models.Aeris, Moshine.Api.Weather.Proxies;
+  Moshine.Api.Weather.Models,
+  Moshine.Api.Weather.Models.Aeris,
+  Moshine.Api.Weather.Proxies;
 
 type
 
@@ -17,7 +18,7 @@ type
       Proxy := new AerisProxy(clientIdValue, clientSecretValue);
     end;
 
-    method Forecast(forecastLocation:Location):Forecast;
+    method Forecast(forecastLocation:LocationCoordinate2D):Forecast;
     begin
       var newForecast := new Forecast;
       var values := Proxy.Forecast(forecastLocation);
@@ -30,21 +31,22 @@ type
 
       if((assigned(value)) and (Boolean(value)))then
       begin
-        var response:NSArray<NSDictionary> := values['response'];
+        /*
+        var response:Array of PlatformImmutableDictionary<String,Object> := values['response'];
 
         newForecast.Interval := response[0]['interval'];
-        var profile:NSDictionary := response[0]['profile'];
+        var profile:PlatformImmutableDictionary<String,Object> := response[0]['profile'];
 
         newForecast.Profile.TimeZone := profile['tz'];
         newForecast.Profile.ElevationFeet := profile['elevFT'];
         newForecast.Profile.ElevationMeters := profile['elevM'];
 
-        var location:NSDictionary := response[0]['loc'];
+        var location:PlatformImmutableDictionary<String,Object> := response[0]['loc'];
 
         newForecast.Location.Longitude := location['long'];
         newForecast.Location.Lattitude := location['lat'];
 
-        var periods:NSArray<NSDictionary> := response[0]['periods'];
+        var periods:array of PlatformImmutableDictionary<String,Object> := response[0]['periods'];
 
         for each period in periods do
         begin
@@ -60,6 +62,7 @@ type
 
           newForecast.Periods.Add(newPeriod);
         end;
+        */
 
       end;
       exit newForecast;
