@@ -55,6 +55,24 @@ type
         begin
           var newHourly := new Hourly;
 
+          newHourly.weatherIconUrl := new List<WeatherIconUrl>;
+          newHourly.weatherDesc := new List<WeatherDesc>;
+
+          for each iconUrl in hour.Item['weatherIconUrl'] as JsonArray do
+          begin
+            var newWeatherIconUrl := new WeatherIconUrl;
+            newWeatherIconUrl.value := iconUrl['value'].StringValue;
+
+            newHourly.weatherIconUrl.Add(newWeatherIconUrl);
+          end;
+
+          for each description in hour.Item['weatherDesc'] as JsonArray do
+          begin
+            var newWeatherDesc := new WeatherDesc;
+            newWeatherDesc.value := description['value'].StringValue;
+
+            newHourly.weatherDesc.Add(newWeatherDesc);
+          end;
 
           newWeather.hourly.Add(newHourly);
         end;
