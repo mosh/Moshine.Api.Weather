@@ -19,6 +19,11 @@ type
 
     {$IF ECHOES}
     constructor; mapped to constructor;
+    {$ELSEIF TOFFEE}
+    constructor;
+    begin
+      self := CoreLocation.CLLocationCoordinate2DMake(0, 0);
+    end;
     {$ENDIF}
 
     constructor(latitudeValue:Double;longitudeValue:Double);
