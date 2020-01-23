@@ -55,6 +55,17 @@ type
         begin
           var newHourly := new Hourly;
 
+          newHourly.time := Convert.ToInt32(hour['time'].StringValue);
+
+          newHourly.tempC := Convert.ToInt32(hour['tempC'].StringValue);
+          newHourly.tempF := Convert.ToInt32(hour['tempF'].StringValue);
+          newHourly.windspeedMiles := Convert.ToInt32(hour['windspeedMiles'].StringValue);
+          newHourly.windspeedKmph := Convert.ToInt32(hour['windspeedKmph'].StringValue);
+          newHourly.winddirDegree := Convert.ToInt32(hour['winddirDegree'].StringValue);
+          newHourly.winddir16Point := hour['winddir16Point'].StringValue;
+          newHourly.weatherCode := hour['weatherCode'].StringValue;
+
+
           newHourly.weatherIconUrl := new List<WeatherIconUrl>;
           newHourly.weatherDesc := new List<WeatherDesc>;
 
@@ -73,6 +84,35 @@ type
 
             newHourly.weatherDesc.Add(newWeatherDesc);
           end;
+
+          newHourly.precipMM := Convert.ToInt32(hour['precipMM'].StringValue);
+          newHourly.precipInches := Convert.ToInt32(hour['precipInches'].StringValue);
+          newHourly.humidity := Convert.ToInt32(hour['humidity'].StringValue);
+          newHourly.visibility := Convert.ToInt32(hour['visibility'].StringValue);
+          newHourly.visibilityMiles := Convert.ToInt32(hour['visibility'].StringValue);
+          newHourly.pressure := Convert.ToInt32(hour['pressure'].StringValue);
+          newHourly.pressureInches := Convert.ToInt32(hour['visibility'].StringValue);
+          newHourly.cloudcover := Convert.ToInt32(hour['cloudcover'].StringValue);
+          newHourly.HeatIndexC := Convert.ToInt32(hour['HeatIndexC'].StringValue);
+          newHourly.HeatIndexF := Convert.ToInt32(hour['HeatIndexF'].StringValue);
+          newHourly.DewpointC := Convert.ToInt32(hour['HeatIndexC'].StringValue);
+          newHourly.HeatIndexF := Convert.ToInt32(hour['HeatIndexF'].StringValue);
+          newHourly.WindChillC := Convert.ToInt32(hour['WindChillC'].StringValue);
+          newHourly.WindChillF := Convert.ToInt32(hour['WindChillF'].StringValue);
+          newHourly.WindGustMiles := Convert.ToInt32(hour['WindGustMiles'].StringValue);
+          newHourly.WindGustKmph := Convert.ToInt32(hour['WindGustKmph'].StringValue);
+          newHourly.FeelsLikeC := Convert.ToInt32(hour['FeelsLikeC'].StringValue);
+          newHourly.FeelsLikeF := Convert.ToInt32(hour['FeelsLikeF'].StringValue);
+
+          newHourly.sigHeight_m := Convert.ToInt32(hour['sigHeight_m'].StringValue);
+          newHourly.swellHeight_m := Convert.ToInt32(hour['swellHeight_m'].StringValue);
+          newHourly.swellHeight_ft := Convert.ToInt32(hour['swellHeight_ft'].StringValue);
+          newHourly.swellDir := Convert.ToInt32(hour['swellDir'].StringValue);
+          newHourly.swellDir16Point := hour['swellDir16Point'].StringValue;
+          newHourly.swellPeriod_secs := Convert.ToInt32(hour['swellPeriod_secs'].StringValue);
+          newHourly.waterTemp_C := Convert.ToInt32(hour['waterTemp_C'].StringValue);
+          newHourly.waterTemp_F := Convert.ToInt32(hour['waterTemp_F'].StringValue);
+
 
           newWeather.hourly.Add(newHourly);
         end;
