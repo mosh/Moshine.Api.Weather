@@ -105,9 +105,7 @@ type
 
     method populateConditions(foundConditions:Conditions) fromString(someString:String);
     begin
-      /*
-      var serializer := new JsonDeserializer(someString);
-      var node := serializer.Deserialize;
+      var node := JsonDocument.FromString(someString);
 
       var currentObservation := node.Item['current_observation'] as JsonObject;
 
@@ -120,16 +118,15 @@ type
       var value := AsInteger('wind_gust_mph') fromJsonObject(currentObservation);
 
       foundConditions.Observation.WindSpeedGusting :=  Convert.ToInt32(value * WeatherConstants.knotsPerMph);
-      */
+
 
     end;
 
 
     method populateLocation(foundLocation:Location) fromString(someString:String);
     begin
-      /*
-      var serializer := new JsonDeserializer(someString);
-      var node := serializer.Deserialize;
+
+      var node := JsonDocument.FromString(someString);
 
 
       var location := node.Item['location'] as JsonObject;
@@ -202,7 +199,6 @@ type
         end;
       end;
 
-    */
     end;
 
   end;

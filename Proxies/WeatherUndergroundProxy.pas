@@ -26,7 +26,7 @@ type
       NSLog('%@','WeatherUndergroundProxy.conditionsForName');
       {$ENDIF}
       var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/conditions/q/{name}.json';
-      //exit WebRequest<Dictionary<String,Object>>('GET',apiUrl,false);
+      exit WebRequestAsType<Dictionary<String,Object>>('GET',apiUrl,false);
     end;
 
     method conditionsForPersonalWeatherStation(id:String):Dictionary<String,Object>;
@@ -35,7 +35,7 @@ type
       NSLog('%@','WeatherUndergroundProxy.conditionsForPersonalWeatherStation');
       {$ENDIF}
       var apiUrl := $'https://api.wunderground.com/api/{_apiKey}/conditions/q/pws:{id}.json';
-      //exit WebRequest<Dictionary<String,Object>>('GET',apiUrl,false);
+      exit WebRequestAsType<Dictionary<String,Object>>('GET',apiUrl,false);
     end;
 
 

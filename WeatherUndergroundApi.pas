@@ -47,7 +47,6 @@ type
 
     method conditionsForPersonalWeatherStation(id:String):Conditions;
     begin
-      //NSLog('%@','WeatherUndergroundApi.conditionsForPersonalWeatherStation');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForPersonalWeatherStation(id);
@@ -59,7 +58,6 @@ type
 
     method conditionsForName(name:String):Conditions;
     begin
-      //NSLog('%@','WeatherUndergroundApi.conditionsForName');
       var foundConditions := new Conditions;
 
       var response := _proxy.conditionsForName(name);
@@ -71,7 +69,6 @@ type
 
     method geoLookup(currentLocation:Location):Location;
     begin
-      //NSLog('%@','WeatherUndergroundApi.geoLookup');
 
       var foundLocation := new Location;
 

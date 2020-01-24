@@ -31,10 +31,8 @@ type
       var aRequest := new HttpRequest(aUrl);
 
       var response := Http.GetString(nil, aRequest);
-      /*
-      var serializer := new JsonDeserializer(response);
 
-      var node := serializer.Deserialize;
+      var node := JsonDocument.FromString(response);
 
       obj.Latitude := (node.Item['latitude'] as JsonFloatValue).FloatValue;
       obj.Longitude := (node.Item['longitude'] as JsonFloatValue).FloatValue;
@@ -49,7 +47,7 @@ type
       obj.Currently.WindBearing := (currently.Item['windBearing'] as JsonIntegerValue).IntegerValue;
       obj.Currently.CloudCover := (currently.Item['cloudCover'] as JsonFloatValue).FloatValue;
       obj.Currently.Pressure := (currently.Item['pressure'] as JsonFloatValue).FloatValue;
-      */
+
       exit obj;
 
     end;
