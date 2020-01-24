@@ -85,9 +85,9 @@ type
             newHourly.weatherDesc.Add(newWeatherDesc);
           end;
 
-          newHourly.precipMM := Convert.ToInt32(hour['precipMM'].StringValue);
-          newHourly.precipInches := Convert.ToInt32(hour['precipInches'].StringValue);
-          newHourly.humidity := Convert.ToInt32(hour['humidity'].StringValue);
+          newHourly.precipMM := Convert.ToDouble(hour['precipMM'].StringValue, Locale.Current);
+          newHourly.precipInches := Convert.ToDouble(hour['precipInches'].StringValue, Locale.Current);
+          newHourly.humidity := Convert.ToDouble(hour['humidity'].StringValue, Locale.Current);
           newHourly.visibility := Convert.ToInt32(hour['visibility'].StringValue);
           newHourly.visibilityMiles := Convert.ToInt32(hour['visibility'].StringValue);
           newHourly.pressure := Convert.ToInt32(hour['pressure'].StringValue);
@@ -104,12 +104,12 @@ type
           newHourly.FeelsLikeC := Convert.ToInt32(hour['FeelsLikeC'].StringValue);
           newHourly.FeelsLikeF := Convert.ToInt32(hour['FeelsLikeF'].StringValue);
 
-          newHourly.sigHeight_m := Convert.ToInt32(hour['sigHeight_m'].StringValue);
-          newHourly.swellHeight_m := Convert.ToInt32(hour['swellHeight_m'].StringValue);
-          newHourly.swellHeight_ft := Convert.ToInt32(hour['swellHeight_ft'].StringValue);
-          newHourly.swellDir := Convert.ToInt32(hour['swellDir'].StringValue);
+          newHourly.sigHeight_m := Convert.ToDouble(hour['sigHeight_m'].StringValue, Locale.Current);
+          newHourly.swellHeight_m := Convert.ToDouble(hour['swellHeight_m'].StringValue, Locale.Current);
+          newHourly.swellHeight_ft := Convert.ToDouble(hour['swellHeight_ft'].StringValue, Locale.Current);
+          newHourly.swellDir := Convert.ToDouble(hour['swellDir'].StringValue, Locale.Current);
           newHourly.swellDir16Point := hour['swellDir16Point'].StringValue;
-          newHourly.swellPeriod_secs := Convert.ToInt32(hour['swellPeriod_secs'].StringValue);
+          newHourly.swellPeriod_secs := Convert.ToDouble(hour['swellPeriod_secs'].StringValue, Locale.Current);
           newHourly.waterTemp_C := Convert.ToInt32(hour['waterTemp_C'].StringValue);
           newHourly.waterTemp_F := Convert.ToInt32(hour['waterTemp_F'].StringValue);
 

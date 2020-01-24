@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.WorldWeatherOnline;
 
 uses
+  Moshine.Api.Weather.Models,
   RemObjects.Elements.RTL;
 
 type
@@ -21,15 +22,21 @@ type
     property visibility: Integer read  write ;
     property waterTemp_C: Integer read  write ;
     property waterTemp_F: Integer read  write ;
-    property windspeedMiles: Integer read  write ;
-    property windspeedKmph: Integer read  write ;
+
+    property windspeedMiles: Integer;
+    property windspeedKmph: Integer;
+    property windspeedKnots: Double read
+      begin
+        exit WeatherConstants.knotsPerMph * windspeedMiles;
+      end;
+
     property winddirDegree: Integer read  write ;
     property winddir16Point: String read  write ;
     property weatherCode: String read  write ;
     property weatherDesc: List<WeatherDesc> read  write ;
     property weatherIconUrl: List<WeatherIconUrl> read  write ;
     property precipMM: Single read  write ;
-    property precipInches:Integer;
+    property precipInches:Single;
     property visibilityMiles:Integer;
     property HeatIndexC:Integer;
     property DewpointC:Integer;
