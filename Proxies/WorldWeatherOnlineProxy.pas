@@ -36,8 +36,23 @@ type
       for each requestItem in requestNode.Items do
       begin
         var newRequest := new Request;
-
+        newRequest.type := requestItem['type'].StringValue;
+        newRequest.query := requestItem['query'].StringValue;
         weather.data.request.Add(newRequest);
+      end;
+
+      weather.data.nearest_area := new List<NearestArea>;
+
+      var nearest_areaNode := dataNode['nearest_area'] as JsonArray;
+
+      for each nearestAreaItem in nearest_areaNode.Items do
+      begin
+        var newNearestArea := new NearestArea;
+        newNearestArea.Location := new LocationCoordinate2D(
+          Convert.ToDouble(nearestAreaItem['latitude'].StringValue, Locale.Current),
+          Convert.ToDouble(nearestAreaItem['longitude'].StringValue, Locale.Current));
+        newNearestArea.DistanceMiles := Convert.ToDouble(nearestAreaItem['distance_miles'].StringValue, Locale.Current);
+        weather.data.nearest_area.Add(newNearestArea);
 
       end;
 

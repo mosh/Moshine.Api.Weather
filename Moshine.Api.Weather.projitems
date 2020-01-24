@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\WeatherIconUrl.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Astronomy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2D.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\NearestArea.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
