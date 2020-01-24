@@ -30,6 +30,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\Astronomy.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2D.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WorldWeatherOnline\NearestArea.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)StormGlassApi.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Forecast.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Proxies\StormGlassProxy.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\IntegerValue.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Hour.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Meta.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
