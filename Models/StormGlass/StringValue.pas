@@ -1,9 +1,9 @@
 ﻿namespace Moshine.Api.Weather.Models.StormGlass;
 
 type
-  IntegerValue = public class(Value)
+  StringValue = public class(Value)
   public
-    property Value:Integer;
+    property Value:String;
   end;
 
 end.

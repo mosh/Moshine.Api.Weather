@@ -16,17 +16,9 @@ type
 
       self._requestBuilder := method (url: String; webMethod: String; addAuthentication: Boolean): Moshine.Foundation.Web.HttpRequest
         begin
-
-          var request:Moshine.Foundation.Web.HttpRequest;
-
-          {$IF TOFFEE}
-          {$ELSEIF ECHOES}
-          request := new PlatformHttpRequest(MethodToHttpMethod(webMethod), url);
-          PlatformHttpRequest(request).Headers.Add('Authorization',ApiKey);
-          {$ENDIF}
-
+          var request := new Moshine.Foundation.Web.HttpRequest(webMethod, url);
+          request.AddHeader('Authorization',ApiKey);
           exit request;
-
         end
 
     end;
@@ -44,14 +36,64 @@ type
       var rootNode := document.Root;
       var metaNode := rootNode.Item['meta'];
 
+      var lat := metaNode.Item['lat'].FloatValue;
+      var lng := metaNode.Item['lng'].FloatValue;
+
       var paramsNode := metaNode.Item['params'] as JsonArray;
 
       newForecast.Meta := new Meta;
+      newForecast.Meta.Location := new LocationCoordinate2D(lat,lng);
       newForecast.Meta.params := new List<String>;
 
       for each paramValue in paramsNode do
       begin
         newForecast.Meta.params.Add(paramValue.StringValue);
+      end;
+
+      var hoursNode := rootNode.Item['hours'] as JsonArray;
+
+      newForecast.Hours := new List<Hour>;
+
+      for each hourItem in hoursNode do
+      begin
+        var newHour := new Hour;
+        newHour.Information := new List<Information>;
+
+        for each paramValue in newForecast.Meta.params do
+        begin
+          var values := hourItem.Item[paramValue] as JsonArray;
+
+          var newInformation := new Information;
+          newInformation.Name := paramValue;
+
+          newInformation.Values := new List<Value>;
+
+          for each valueItem in values do
+          begin
+            var sourceValueItem := valueItem.Item['value'];
+
+            var generalValue:Value := nil;
+
+            case sourceValueItem type of
+              JsonFloatValue: generalValue := new DoubleValue(Value := sourceValueItem.FloatValue);
+              JsonIntegerValue: generalValue := new IntegerValue(Value := sourceValueItem.IntegerValue);
+              JsonStringValue: generalValue := new StringValue(Value := sourceValueItem.StringValue);
+              else
+                raise new Exception('unexpected json type');
+            end;
+
+            generalValue.source := valueItem.Item['source'].StringValue;
+
+            newInformation.Values.Add(generalValue);
+
+          end;
+
+          newHour.Information.Add(newInformation);
+
+        end;
+
+        newForecast.Hours.Add(newHour);
+
       end;
 
 

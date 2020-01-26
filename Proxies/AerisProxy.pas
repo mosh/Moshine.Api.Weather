@@ -24,7 +24,7 @@ type
     begin
       var locationString := $'{location.Latitude},{location.Longitude}';
       var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
-      exit WebRequestAsType<ImmutableDictionary<String,Object>>('GET',url,false);
+      exit WebRequestAs<ImmutableDictionary<String,Object>>('GET',url,false);
     end;
 
   end;

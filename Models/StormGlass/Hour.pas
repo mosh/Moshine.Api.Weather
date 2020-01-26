@@ -1,10 +1,12 @@
 ﻿namespace Moshine.Api.Weather.Models.StormGlass;
 
+uses
+  RemObjects.Elements.RTL;
+
 type
   Hour = public class
-  private
-  protected
   public
+    property Information:List<Information>;
   end;
 
 end.

@@ -36,6 +36,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\IntegerValue.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Hour.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Meta.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Information.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Value.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\DoubleValue.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\StringValue.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
