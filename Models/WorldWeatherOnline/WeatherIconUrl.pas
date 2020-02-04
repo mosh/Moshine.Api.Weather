@@ -2,9 +2,8 @@
 
 type
   WeatherIconUrl = public class
-  private
-  protected
   public
+    property value: String read  write ;
   end;
 
 end.

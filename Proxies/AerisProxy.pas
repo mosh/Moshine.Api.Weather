@@ -1,9 +1,9 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
-  CoreLocation,
-  Foundation,
-  Moshine.Foundation.Web;
+  Moshine.Foundation.Web,
+  Moshine.Api.Weather.Models,
+  RemObjects.Elements.RTL;
 
 type
   AerisProxy = public class(WebProxy)
@@ -20,11 +20,11 @@ type
       clientSecret := clientSecretValue;
     end;
 
-    method Forecast(location:CLLocationCoordinate2D):NSDictionary;
+    method Forecast(location: LocationCoordinate2D):ImmutableDictionary<String,Object>;
     begin
-      var locationString := NSString.stringWithFormat('%.04f,%.04f',location.latitude,location.longitude);
+      var locationString := $'{location.Latitude},{location.Longitude}';
       var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
-      exit WebRequest<NSDictionary>('GET',url,false);
+      exit WebRequestAs<ImmutableDictionary<String,Object>>('GET',url,false);
     end;
 
   end;

@@ -1,8 +1,6 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  CoreLocation,
-  Foundation,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.DarkSky,
   RemObjects.Elements.RTL;
@@ -19,11 +17,11 @@ type
       _apiKey := apiKey;
     end;
 
-    method GetForecast(location:CLLocationCoordinate2D):Forecast;
+    method GetForecast(location:LocationCoordinate2D):Forecast;
     begin
       var obj := new Forecast;
 
-      var value := NSString.stringWithFormat('https://api.darksky.net/forecast/%@/%.04f,%.04f?units=uk2',_apiKey,location.latitude,location.longitude);
+      var value := $'https://api.darksky.net/forecast/{_apiKey}/{location.Latitude},{location.Longitude}?units=uk2';
 
       // nearestStormDistance and visibility are in miles and windSpeed is in miles per hour
       // 1 mile per hour is 0.868976 knot
@@ -34,9 +32,7 @@ type
 
       var response := Http.GetString(nil, aRequest);
 
-      var serializer := new JsonDeserializer(response);
-
-      var node := serializer.Deserialize;
+      var node := JsonDocument.FromString(response);
 
       obj.Latitude := (node.Item['latitude'] as JsonFloatValue).FloatValue;
       obj.Longitude := (node.Item['longitude'] as JsonFloatValue).FloatValue;

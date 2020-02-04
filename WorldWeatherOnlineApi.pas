@@ -1,8 +1,9 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  CoreLocation,
-  Moshine.Api.Weather.Proxies, Moshine.Api.Weather.Models.WorldWeatherOnline;
+  Moshine.Api.Weather.Proxies,
+  Moshine.Api.Weather.Models,
+  Moshine.Api.Weather.Models.WorldWeatherOnline, RemObjects.Elements.RTL;
 
 type
   WorldWeatherOnlineApi = public class
@@ -15,13 +16,9 @@ type
       proxy := new WorldWeatherOnlineProxy(apiKey);
     end;
 
-    method Forecast(forecastLocation:CLLocationCoordinate2D):MarineWeather;
+    method Forecast(forecastLocation:LocationCoordinate2D):MarineWeather;
     begin
-
-      var weather := new MarineWeather;
-
-      exit weather;
-
+      exit proxy.GetMarineForecast(forecastLocation);
     end;
   end;
 
