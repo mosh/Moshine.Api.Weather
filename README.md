@@ -1,9 +1,9 @@
 # Moshine.Api.Weather
 
-Api wrapper over the top of a couple of weather apis
+Api wrapper over the top of of weather apis
 
-Minimal support for Dark Sky and Weather Underground.
+Minimal support for Storm Glass, Aeris and World Weather Online.
 
-Written using Elements using RTL2 for the cocoa platform(s) 
+Written using Elements using RTL2. 
 
-iOS, WatchOS and MacOS
+iOS, WatchOS, MacOS and .Net
