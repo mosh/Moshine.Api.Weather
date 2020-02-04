@@ -3,6 +3,7 @@
 uses
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
+  Moshine.Foundation,
   Moshine.Foundation.Web, RemObjects.Elements.RTL;
 type
 
@@ -58,6 +59,10 @@ type
       begin
         var newHour := new Hour;
         newHour.Information := new List<Information>;
+
+        var timeNode := hourItem.Item['time'];
+
+        newHour.Time := DateTime.ParseISO8601DateTime(timeNode.StringValue);
 
         for each paramValue in newForecast.Meta.params do
         begin

@@ -7,6 +7,7 @@ type
   Hour = public class
   public
     property Information:List<Information>;
+    property Time:DateTime;
   end;
 
 end.
