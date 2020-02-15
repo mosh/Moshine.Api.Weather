@@ -24,6 +24,13 @@ type
 
     end;
 
+    method GetForecastForArea();
+    begin
+      var box := $'60,20:58,17';
+      var url := $'https://api.stormglass.io/v1/weather/area?box=${box}';
+
+    end;
+
     method GetForecast(location:LocationCoordinate2D):Forecast;
     begin
       var url := $'https://api.stormglass.io/v1/weather/point?lat={location.Latitude}&lng={location.Longitude}';
