@@ -40,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\Value.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\DoubleValue.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\StringValue.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2DExtensions.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
