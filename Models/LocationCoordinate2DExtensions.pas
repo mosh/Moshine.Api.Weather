@@ -7,8 +7,8 @@ type
 
   BoundingBox = public class
   public
-    property MinPoint: LocationCoordinate2D read  write ;
-    property MaxPoint: LocationCoordinate2D read  write ;
+    property MinPoint: LocationCoordinate2D;
+    property MaxPoint: LocationCoordinate2D;
   end;
 
 
@@ -24,6 +24,8 @@ type
     begin
       {$IFDEF ECHOES}
       exit System.Math.PI * degrees / 180.0;
+      {$ELSEIF TOFFEE}
+      exit M_PI * degrees / 180.0;
       {$ELSE}
       raise new NotImplementedException;
       {$ENDIF}
@@ -34,6 +36,8 @@ type
     begin
       {$IFDEF ECHOES}
       exit 180.0 * radians / System.Math.PI;
+      {$ELSEIF TOFFEE}
+      exit 180.0 * radians / M_PI;
       {$ELSE}
       raise new NotImplementedException;
       {$ENDIF}
@@ -52,13 +56,13 @@ type
   public
     // https://stackoverflow.com/questions/238260/how-to-calculate-the-bounding-box-for-a-given-lat-lng-location
     // 'halfSideInKm' is the half length of the bounding box you want in kilometers.
-    class method  GetBoundingBox(point:LocationCoordinate2D; halfSideInKm:Double):BoundingBox;
+    method  GetBoundingBox(halfSideInKm:Double):BoundingBox;
     begin
       // Bounding box surrounding the point at given coordinates,
       // assuming local approximation of Earth surface as a sphere
       // of radius given by WGS84
-      var lat := Deg2rad(point.Latitude);
-      var lon := Deg2rad(point.Longitude);
+      var lat := Deg2rad(self.Latitude);
+      var lon := Deg2rad(self.Longitude);
       var halfSide := 1000 * halfSideInKm;
 
       // Radius of Earth at given latitude
