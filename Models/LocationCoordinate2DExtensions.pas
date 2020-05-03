@@ -11,6 +11,8 @@ type
     property MaxPoint: LocationCoordinate2D;
   end;
 
+  // http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates
+
 
   LocationCoordinate2DExtensions = public extension class(LocationCoordinate2D)
   private
