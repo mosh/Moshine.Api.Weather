@@ -19,6 +19,10 @@ type
       exit proxy.GetForecast(location);
     end;
 
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+      exit proxy.GetCurrentConditions(location);
+    end;
 
   end;
 end.

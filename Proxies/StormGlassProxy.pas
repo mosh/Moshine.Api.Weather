@@ -9,6 +9,9 @@ type
 
   StormGlassProxy = public class(WebProxy)
   private
+
+    const ToKnots:Double = 1.94384;
+
     property ApiKey:String;
   public
     constructor(apiKeyValue:String);
@@ -28,6 +31,54 @@ type
     begin
       var box := $'60,20:58,17';
       var url := $'https://api.stormglass.io/v1/weather/area?box=${box}';
+
+    end;
+
+    method GetCurrentConditions(location:LocationCoordinate2D):CurrentConditions;
+    begin
+      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.Latitude}&lng={location.Longitude}&params=windDirection,gust,windSpeed';
+
+      var stringValues := WebRequestAsString('GET', url, nil, true);
+
+      var document := JsonDocument.FromString(stringValues);
+
+      var rootNode := document.Root;
+      var metaNode := rootNode.Item['meta'];
+
+      var lat := metaNode.Item['lat'].FloatValue;
+      var lng := metaNode.Item['lng'].FloatValue;
+
+      var paramsNode := metaNode.Item['params'] as JsonArray;
+      var hoursNode := rootNode.Item['hours'] as JsonArray;
+
+      var hour := hoursNode.First;
+
+      var gust := hour.Item['gust'] as JsonObject;
+      var windDirection := hour.Item['windDirection'] as JsonObject;
+      var windSpeed := hour.Item['windSpeed'] as JsonObject;
+
+      var gustValue := gust.Item['noaa'] as JsonFloatValue;
+      var windDirectionValue := windDirection.Item['noaa'] as JsonFloatValue;
+      var windSpeedValue := windSpeed.Item['noaa'] as JsonFloatValue;
+
+      var current := new CurrentConditions;
+
+      current.WindSpeedGusting := Double(gustValue) * ToKnots;
+      current.WindSpeed := Double(windSpeedValue) * ToKnots;
+      current.WindDirection := '';
+      current.ShortWindAsString := '';
+      current.Weather := '';
+
+      {
+      property WindSpeed:Double;
+      property WindSpeedGusting:Double;
+      property WindDirection:String;
+      property ShortWindAsString:String;
+      property Weather:String;
+      }
+
+
+      exit current;
 
     end;
 

@@ -17,6 +17,11 @@ type
       _apiKey := apiKey;
     end;
 
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+
+    end;
+
     method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
       var obj := new Forecast;

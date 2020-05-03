@@ -43,6 +43,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2DExtensions.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)IWeatherApi.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\IForecast.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ICurrentConditions.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\CurrentConditions.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

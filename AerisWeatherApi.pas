@@ -18,6 +18,11 @@ type
       Proxy := new AerisProxy(clientIdValue, clientSecretValue);
     end;
 
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+
+    end;
+
     method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
     begin
       var newForecast := new Forecast;

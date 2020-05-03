@@ -13,31 +13,6 @@ type
      property Periods:List<Period> := new List<Period>;
      property Interval:String;
 
-
-     property WindSpeed:Double read
-      begin
-
-      end;
-     property WindSpeedGusting:Double read
-      begin
-
-      end;
-
-     property WindDirection:String read
-      begin
-
-      end;
-
-     property ShortWindAsString:String read
-      begin
-
-      end;
-
-     property Weather:String read
-      begin
-
-      end;
-
   end;
 
 end.

@@ -22,6 +22,11 @@ type
       exit proxy.GetMarineForecast(forecastLocation);
     end;
 
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+
+    end;
+
   end;
 
 end.
