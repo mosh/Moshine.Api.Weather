@@ -41,6 +41,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\DoubleValue.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\StringValue.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LocationCoordinate2DExtensions.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)IWeatherApi.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IForecast.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

@@ -1,5 +1,8 @@
 ﻿namespace Moshine.Api.Weather.Models.DarkSky;
 
+uses
+  Moshine.Api.Weather.Models;
+
 type
 
   ForecastMoment = public class
@@ -13,7 +16,7 @@ type
     property Pressure:Double;
   end;
 
-  Forecast = public class
+  Forecast = public class(IForecast)
   private
     _currently:ForecastMoment := new ForecastMoment;
   public
@@ -45,6 +48,31 @@ type
                 "ozone": 328.35
               },
 */
+    property WindSpeed:Double read
+      begin
+
+      end;
+
+    property WindSpeedGusting:Double read
+      begin
+
+      end;
+
+    property WindDirection:String read
+      begin
+
+      end;
+
+    property ShortWindAsString:String read
+      begin
+
+      end;
+
+    property Weather:String read
+      begin
+
+      end;
+
   end;
 
 end.

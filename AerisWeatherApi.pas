@@ -8,7 +8,7 @@ uses
 
 type
 
-  AerisWeatherApi = public class
+  AerisWeatherApi = public class(IWeatherApi)
   private
     property Proxy:AerisProxy;
 
@@ -18,7 +18,7 @@ type
       Proxy := new AerisProxy(clientIdValue, clientSecretValue);
     end;
 
-    method Forecast(forecastLocation:LocationCoordinate2D):Forecast;
+    method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
     begin
       var newForecast := new Forecast;
       var values := Proxy.Forecast(forecastLocation);

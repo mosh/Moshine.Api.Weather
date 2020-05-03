@@ -7,7 +7,7 @@ uses
 
 type
 
-  DarkSkyApi = public class
+  DarkSkyApi = public class(IWeatherApi)
   private
     _apiKey:String;
 
@@ -17,7 +17,7 @@ type
       _apiKey := apiKey;
     end;
 
-    method GetForecast(location:LocationCoordinate2D):Forecast;
+    method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
       var obj := new Forecast;
 

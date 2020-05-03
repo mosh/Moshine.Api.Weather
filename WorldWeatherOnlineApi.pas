@@ -6,7 +6,8 @@ uses
   Moshine.Api.Weather.Models.WorldWeatherOnline, RemObjects.Elements.RTL;
 
 type
-  WorldWeatherOnlineApi = public class
+
+  WorldWeatherOnlineApi = public class(IWeatherApi)
   private
     property proxy:WorldWeatherOnlineProxy;
   protected
@@ -16,10 +17,11 @@ type
       proxy := new WorldWeatherOnlineProxy(apiKey);
     end;
 
-    method Forecast(forecastLocation:LocationCoordinate2D):MarineWeather;
+    method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
     begin
       exit proxy.GetMarineForecast(forecastLocation);
     end;
+
   end;
 
 end.
