@@ -14,6 +14,7 @@ type
 
     property ApiKey:String;
   public
+
     constructor(apiKeyValue:String);
     begin
       ApiKey := apiKeyValue;
@@ -29,14 +30,38 @@ type
 
     method GetForecastForArea();
     begin
+
       var box := $'60,20:58,17';
       var url := $'https://api.stormglass.io/v1/weather/area?box=${box}';
 
     end;
 
+    method TimeSinceEpoch:Double;
+    begin
+      {$IF ECHOES}
+      exit DateTimeOffset.Now.ToUnixTimeSeconds;
+      {$ELSEIF TOFFEE}
+      var date := new Foundation.NSDate;
+      exit date.timeIntervalSince1970;
+      {$ELSE}
+      raise NotImplementedException;
+      {$ENDIF}
+    end;
+
+    method DegreesToCompass(num:Double):String;
+    begin
+      var val := Integer((num/22.5)+.5);
+      var arr := ['N','NNE','NE','ENE','E','ESE', 'SE', 'SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+      exit arr[(val mod 16)];
+    end;
+
+
     method GetCurrentConditions(location:LocationCoordinate2D):CurrentConditions;
     begin
-      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.Latitude}&lng={location.Longitude}&params=windDirection,gust,windSpeed';
+
+      var since := TimeSinceEpoch;
+
+      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.Latitude}&lng={location.Longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
@@ -65,18 +90,9 @@ type
 
       current.WindSpeedGusting := Double(gustValue) * ToKnots;
       current.WindSpeed := Double(windSpeedValue) * ToKnots;
-      current.WindDirection := '';
+      current.WindDirection := DegreesToCompass(windDirectionValue);
       current.ShortWindAsString := '';
       current.Weather := '';
-
-      {
-      property WindSpeed:Double;
-      property WindSpeedGusting:Double;
-      property WindDirection:String;
-      property ShortWindAsString:String;
-      property Weather:String;
-      }
-
 
       exit current;
 
