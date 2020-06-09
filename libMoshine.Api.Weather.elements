@@ -10,6 +10,25 @@
     <MangleTypeNames>True</MangleTypeNames>
     <CreateHeaderFile>True</CreateHeaderFile>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'macOS' ">
+    <Mode>Toffee</Mode>
+    <SubMode>macOS</SubMode>
+    <SDK>macOS</SDK>
+    <DeploymentTargetVersion>10.10</DeploymentTargetVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'iOS' ">
+    <Mode>Toffee</Mode>
+    <SubMode>iOS</SubMode>
+    <SDK>iOS</SDK>
+    <DeploymentTargetVersion>7.0</DeploymentTargetVersion>
+    <SupportUIKitForMac>True</SupportUIKitForMac>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'watchOS' ">
+    <Mode>Toffee</Mode>
+    <SubMode>watchOS</SubMode>
+    <SDK>watchOS</SDK>
+    <DeploymentTargetVersion>3.0</DeploymentTargetVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <Optimize>False</Optimize>
     <OutputPath>.\Bin\Debug</OutputPath>
@@ -23,7 +42,6 @@
   <ItemGroup>
     <Reference Include="CoreGraphics" />
     <Reference Include="Foundation" />
-    <Reference Include="UIKit" />
     <Reference Include="rtl" />
     <Reference Include="libToffee" />
     <Reference Include="libElements" />

@@ -4,3 +4,9 @@ Bin/Debug/iOS/libMoshine.Api.Weather.h
 Bin/Debug/iOS/liblibMoshine.Api.Weather.a
 Moshine.Api.Weather.sln.fire.cache
 Moshine.Api.Weather.sln.fire.user
+Bin/Debug/macOS/liblibMoshine.Api.Weather.a
+Bin/Debug/macOS/liblibMoshine.Api.Weather.fx
+Bin/Debug/macOS/libMoshine.Api.Weather.h
+Bin/Debug/watchOS/liblibMoshine.Api.Weather.a
+Bin/Debug/watchOS/liblibMoshine.Api.Weather.fx
+Bin/Debug/watchOS/libMoshine.Api.Weather.h
