@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E7D3C7E5-2040-4FB2-950B-F3E776DA17BA}</ProjectGuid>
+    <RootNamespace>Moshine.Api.Weather</RootNamespace>
+  </PropertyGroup>
+  <Import Project="Moshine.Api.Weather.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.SharedProject.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+</Project>

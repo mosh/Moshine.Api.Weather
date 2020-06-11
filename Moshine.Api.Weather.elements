@@ -1,12 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Label="Globals">
-    <ProjectGuid>{E7D3C7E5-2040-4FB2-950B-F3E776DA17BA}</ProjectGuid>
-    <RootNamespace>Moshine.Api.Weather</RootNamespace>
-  </PropertyGroup>
-  <Import Project="Moshine.Api.Weather.projitems" Label="Shared" />
-  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.SharedProject.targets" />
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <PreBuildEvent />
+    <ProductVersion>3.5</ProductVersion>
+    <RootNamespace>Moshine.Api.Weather</RootNamespace>
+    <ProjectGuid>{149E31AF-CF12-41B0-AC2C-FF0C5363F877}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Moshine.Api.Weather</AssemblyName>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+    <TargetFramework>.NETStandard</TargetFramework>
+    <Mode>Echoes</Mode>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Optimize>False</Optimize>
+    <OutputPath>.\Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <GeneratePDB>True</GeneratePDB>
+    <GenerateMDB>True</GenerateMDB>
+    <EnableAsserts>True</EnableAsserts>
+    <CpuType>anycpu</CpuType>
+    <EnableUnmanagedDebugging>False</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>.\Bin\Release</OutputPath>
+    <CpuType>anycpu</CpuType>
+    <EnableUnmanagedDebugging>False</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Echoes">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elements">
+      <Private>True</Private>
+    </Reference>
+    <RemoteProjectReference Include="github.com/mosh/Moshine.Foundation/Moshine.Foundation.elements:*">
+      <Private>True</Private>
+    </RemoteProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.pas" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.pas" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+    <Compile Include="Properties\Settings.Designer.pas" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
