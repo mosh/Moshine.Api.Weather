@@ -48,4 +48,5 @@
     <Compile Include="Properties\Settings.Designer.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
-</Project>
+  <Import Project="Moshine.Api.Weather.Shared.projitems" Label="Shared" />
+ </Project>

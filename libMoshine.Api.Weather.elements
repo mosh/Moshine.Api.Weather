@@ -51,5 +51,5 @@
     </RemoteProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.Toffee.targets" />
-  <Import Project="Moshine.Api.Weather.projitems" Label="Shared" />
+   <Import Project="Moshine.Api.Weather.Shared.projitems" Label="Shared" />
 </Project>
