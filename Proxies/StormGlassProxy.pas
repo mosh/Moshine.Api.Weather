@@ -44,7 +44,7 @@ type
       var date := new Foundation.NSDate;
       exit date.timeIntervalSince1970;
       {$ELSE}
-      raise NotImplementedException;
+      raise new NotImplementedException;
       {$ENDIF}
     end;
 

@@ -6,7 +6,6 @@
     <OutputType>StaticLibrary</OutputType>
     <AssemblyName>libMoshine.Api.Weather</AssemblyName>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
-    <SDK>iOS</SDK>
     <MangleTypeNames>True</MangleTypeNames>
     <CreateHeaderFile>True</CreateHeaderFile>
   </PropertyGroup>
@@ -15,6 +14,10 @@
     <SubMode>macOS</SubMode>
     <SDK>macOS</SDK>
     <DeploymentTargetVersion>10.10</DeploymentTargetVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'linux' ">
+    <Mode>Island</Mode>
+    <SubMode>Linux</SubMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'iOS' ">
     <Mode>Toffee</Mode>
@@ -40,12 +43,48 @@
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CoreGraphics" />
-    <Reference Include="Foundation" />
+     <Reference Include="CoreGraphics">
+      <Target>iOS</Target>
+    </Reference>
+    <Reference Include="CoreGraphics">
+      <Target>macOS</Target>
+    </Reference>
+    <Reference Include="CoreGraphics">
+      <Target>watchOS</Target>
+    </Reference>
+
+     <Reference Include="Foundation">
+      <Target>iOS</Target>
+    </Reference>
+    <Reference Include="Foundation">
+      <Target>macOS</Target>
+    </Reference>
+    <Reference Include="Foundation">
+      <Target>watchOS</Target>
+    </Reference>
+   
+   <Reference Include="libToffee">
+      <Target>iOS</Target>
+    </Reference>
+    <Reference Include="libToffee">
+      <Target>macOS</Target>
+    </Reference>
+    <Reference Include="libToffee">
+      <Target>watchOS</Target>
+    </Reference>
+
+   <Reference Include="CoreLocation">
+      <Target>iOS</Target>
+    </Reference>
+    <Reference Include="CoreLocation">
+      <Target>macOS</Target>
+    </Reference>
+    <Reference Include="CoreLocation">
+      <Target>watchOS</Target>
+    </Reference>
+
     <Reference Include="rtl" />
-    <Reference Include="libToffee" />
     <Reference Include="libElements" />
-    <Reference Include="CoreLocation" />
     <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/libMoshine.Foundation.elements:*">
       <Private>True</Private>
     </RemoteProjectReference>

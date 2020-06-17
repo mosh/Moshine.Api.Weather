@@ -17,13 +17,13 @@ type
     property Latitude: Double read mapped.latitude write mapped.latitude;
     property Longitude: Double read mapped.longitude write mapped.longitude;
 
-    {$IF ECHOES}
-    constructor; mapped to constructor;
-    {$ELSEIF TOFFEE}
+    {$IF TOFFEE}
     constructor;
     begin
       self := CoreLocation.CLLocationCoordinate2DMake(0, 0);
     end;
+    {$ELSE}
+    constructor; mapped to constructor;
     {$ENDIF}
 
     constructor(latitudeValue:Double;longitudeValue:Double);
