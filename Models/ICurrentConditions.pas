@@ -1,7 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models;
 
 type
-  ICurrentConditions = public class
+  ICurrentConditions = public interface
     property WindSpeed:Double read;
     property WindSpeedGusting:Double read;
     property WindDirection:String read;
