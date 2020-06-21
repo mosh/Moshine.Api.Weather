@@ -30,23 +30,10 @@ type
 
     method GetForecastForArea();
     begin
-
       var box := $'60,20:58,17';
       var url := $'https://api.stormglass.io/v1/weather/area?box=${box}';
-
     end;
 
-    method TimeSinceEpoch:Double;
-    begin
-      {$IF ECHOES}
-      exit DateTimeOffset.Now.ToUnixTimeSeconds;
-      {$ELSEIF TOFFEE}
-      var date := new Foundation.NSDate;
-      exit date.timeIntervalSince1970;
-      {$ELSE}
-      raise new NotImplementedException;
-      {$ENDIF}
-    end;
 
     method DegreesToCompass(num:Double):String;
     begin
@@ -59,7 +46,7 @@ type
     method GetCurrentConditions(location:LocationCoordinate2D):CurrentConditions;
     begin
 
-      var since := TimeSinceEpoch;
+      var since := DateTime.TimeSinceEpoch;
 
       var url := $'https://api.stormglass.io/v2/weather/point?lat={location.Latitude}&lng={location.Longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
 

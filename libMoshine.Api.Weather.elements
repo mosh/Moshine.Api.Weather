@@ -42,10 +42,12 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\Bin\Release</OutputPath>
   </PropertyGroup>
+  <ItemGroup  Condition=" '$(Target)' == 'iOS' ">
+     <Reference Include="CoreGraphics"/>
+     <Reference Include="Foundation"/>
+   <Reference Include="libToffee"/>
+  </ItemGroup>
   <ItemGroup>
-     <Reference Include="CoreGraphics">
-      <Target>iOS</Target>
-    </Reference>
     <Reference Include="CoreGraphics">
       <Target>macOS</Target>
     </Reference>
@@ -53,9 +55,6 @@
       <Target>watchOS</Target>
     </Reference>
 
-     <Reference Include="Foundation">
-      <Target>iOS</Target>
-    </Reference>
     <Reference Include="Foundation">
       <Target>macOS</Target>
     </Reference>
@@ -63,9 +62,6 @@
       <Target>watchOS</Target>
     </Reference>
    
-   <Reference Include="libToffee">
-      <Target>iOS</Target>
-    </Reference>
     <Reference Include="libToffee">
       <Target>macOS</Target>
     </Reference>
