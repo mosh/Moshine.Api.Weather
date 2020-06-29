@@ -5,11 +5,9 @@
     <HasSharedItems>true</HasSharedItems>
     <SharedGUID>{E7D3C7E5-2040-4FB2-950B-F3E776DA17BA}</SharedGUID>
     <Import_RootNamespace>Moshine.Api.Weather</Import_RootNamespace>
-    <ProjectGuid>{3E6BB035-0B63-4A59-AF0E-DD4A7B78B077}</ProjectGuid>
+    <ProjectGuid>{E7D3C7E5-2040-4FB2-950B-F3E776DA17BA}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)DarkSkyApi.pas" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\DarkSky\Forecast.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherConstants.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)AerisWeatherApi.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Aeris\Forecast.pas" />
@@ -47,6 +45,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />
-    <Folder Include="$(MSBuildThisFileDirectory)Models\DarkSky" />
   </ItemGroup>
 </Project>
