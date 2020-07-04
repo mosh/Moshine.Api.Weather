@@ -22,7 +22,7 @@ type
     property WindSpeed:Double read
       begin
         var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'windSpeed');
-
+        exit DoubleValue(item.Values.First).Value;
       end;
 
     property WindDirection:Integer read
@@ -34,8 +34,7 @@ type
     property WindGust:Double read
       begin
         var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'gust');
-
-
+        exit DoubleValue(item.Values.First).Value;
       end;
 
 
