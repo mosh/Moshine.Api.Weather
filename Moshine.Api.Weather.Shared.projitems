@@ -42,6 +42,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\IForecast.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ICurrentConditions.pas" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\CurrentConditions.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IAtTime.pas" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\StormGlass\AtTime.pas" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models" />

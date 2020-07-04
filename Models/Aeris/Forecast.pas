@@ -13,6 +13,11 @@ type
      property Periods:List<Period> := new List<Period>;
      property Interval:String;
 
+     property Times:List<IAtTime> read
+      begin
+        raise new NotImplementedException;
+      end;
+
   end;
 
 end.
