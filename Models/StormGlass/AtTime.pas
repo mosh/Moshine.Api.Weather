@@ -8,6 +8,18 @@ type
   AtTime = public class(IAtTime)
   private
     _someHour:Hour;
+
+    method getDoubleValue(name:String):Double;
+    begin
+      var item := _someHour.Information.FirstOrDefault(i -> i.Name = name);
+      if(not item.Values.Any)then
+      begin
+        writeLn($'No values for {name}');
+        exit 0;
+      end;
+      exit DoubleValue(item.Values.First).Value;
+    end;
+
   public
     constructor(someHour:Hour);
     begin
@@ -21,64 +33,54 @@ type
 
     property WindSpeed:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'windSpeed');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('windSpeed');
       end;
 
     property WindDirection:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'windDirection');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('windDirection');
       end;
 
     property WindGust:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'gust');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('gust');
       end;
 
 
     property CurrentSpeed:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'currentSpeed');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('currentSpeed');
       end;
 
     property CurrentDirection:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'currentDirection');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('currentDirection');
       end;
 
     property Pressure:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'pressure');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('pressure');
       end;
 
     property CloudCover:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'cloudCover');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('cloudCover');
       end;
 
     property SwellHeight:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'swellHeight');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('swellHeight');
       end;
 
     property SwellDirection:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'swellDirection');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('swellDirection');
       end;
 
 
     property WaveHeight:Double read
       begin
-        var item := _someHour.Information.FirstOrDefault(i -> i.Name = 'waveHeight');
-        exit DoubleValue(item.Values.First).Value;
+        exit getDoubleValue('waveHeight');
       end;
 
 
