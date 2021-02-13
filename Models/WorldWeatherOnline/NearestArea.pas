@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.WorldWeatherOnline;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models;
 
 type

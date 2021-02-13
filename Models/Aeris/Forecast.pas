@@ -1,11 +1,12 @@
 ﻿namespace Moshine.Api.Weather.Models.Aeris;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   RemObjects.Elements.RTL;
 
 type
-   Forecast = public class(IForecast)
+   AerisForecast = public class(IForecast)
    public
 
      property Profile:Profile := new Profile;

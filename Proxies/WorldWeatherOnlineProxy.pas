@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.WorldWeatherOnline,
   RemObjects.Elements.RTL, Moshine.Foundation.Web;
@@ -17,7 +18,7 @@ type
 
     method GetMarineForecast(forecastLocation:LocationCoordinate2D):MarineWeather;
     begin
-      var url := $'https://api.worldweatheronline.com/premium/v1/marine.ashx?key={ApiKey}&q={forecastLocation.Latitude},{forecastLocation.Latitude}&format=json&includelocation=yes&tide=yes';
+      var url := $'https://api.worldweatheronline.com/premium/v1/marine.ashx?key={ApiKey}&q={forecastLocation.latitude},{forecastLocation.latitude}&format=json&includelocation=yes&tide=yes';
       var stringResponse := WebRequestAsString('GET',url,nil,false);
 
       var weather := new MarineWeather;

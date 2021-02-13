@@ -6,7 +6,7 @@ uses
 
 type
 
-  Forecast = public class(IForecast)
+  StormGlassForecast = public class(IForecast)
   private
     _times:List<IAtTime>;
 

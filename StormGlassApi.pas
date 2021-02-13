@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass, Moshine.Api.Weather.Proxies;
 

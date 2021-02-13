@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
   Moshine.Foundation,
@@ -48,7 +49,7 @@ type
 
       var since := DateTime.TimeSinceEpoch;
 
-      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.Latitude}&lng={location.Longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
+      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
@@ -85,13 +86,13 @@ type
 
     end;
 
-    method GetForecast(location:LocationCoordinate2D):Forecast;
+    method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
-      var url := $'https://api.stormglass.io/v1/weather/point?lat={location.Latitude}&lng={location.Longitude}';
+      var url := $'https://api.stormglass.io/v1/weather/point?lat={location.latitude}&lng={location.longitude}';
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
-      var newForecast := new Forecast;
+      var newForecast := new StormGlassForecast;
 
       var document := JsonDocument.FromString(stringValues);
 

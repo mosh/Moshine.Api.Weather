@@ -1,11 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # RemObjects Fire
-Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Moshine.Api.Weather", "Moshine.Api.Weather.elements", "{149E31AF-CF12-41B0-AC2C-FF0C5363F877}"
-EndProject
-Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Moshine.Api.Weather.Shared", "Moshine.Api.Weather.Shared.elements", "{E7D3C7E5-2040-4FB2-950B-F3E776DA17BA}"
-EndProject
-Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "libMoshine.Api.Weather", "libMoshine.Api.Weather.elements", "{D2C1B34F-99CB-4197-A449-A2C526B0D707}"
+Project("{656346D9-4656-40DA-A068-22D5425D4639}") = "Moshine.Api.Weather", "Moshine.Api.Weather.elements", "{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +9,10 @@ Global
 		Release|AnyCPU = Release|AnyCPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{149E31AF-CF12-41B0-AC2C-FF0C5363F877}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
-		{149E31AF-CF12-41B0-AC2C-FF0C5363F877}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
-		{149E31AF-CF12-41B0-AC2C-FF0C5363F877}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
-		{149E31AF-CF12-41B0-AC2C-FF0C5363F877}.Release|AnyCPU.Build.0 = Release|AnyCPU
-		{D2C1B34F-99CB-4197-A449-A2C526B0D707}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
-		{D2C1B34F-99CB-4197-A449-A2C526B0D707}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
-		{D2C1B34F-99CB-4197-A449-A2C526B0D707}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
-		{D2C1B34F-99CB-4197-A449-A2C526B0D707}.Release|AnyCPU.Build.0 = Release|AnyCPU
+		{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}.Debug|AnyCPU.ActiveCfg = Debug|AnyCPU
+		{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}.Debug|AnyCPU.Build.0 = Debug|AnyCPU
+		{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}.Release|AnyCPU.ActiveCfg = Release|AnyCPU
+		{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}.Release|AnyCPU.Build.0 = Release|AnyCPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.StormGlass;
 
 uses
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models, RemObjects.Elements.RTL;
 
 type

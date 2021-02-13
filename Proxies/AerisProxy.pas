@@ -2,6 +2,7 @@
 
 uses
   Moshine.Foundation.Web,
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   RemObjects.Elements.RTL;
 
@@ -22,7 +23,7 @@ type
 
     method Forecast(location: LocationCoordinate2D):ImmutableDictionary<String,Object>;
     begin
-      var locationString := $'{location.Latitude},{location.Longitude}';
+      var locationString := $'{location.latitude},{location.longitude}';
       var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
       exit WebRequestAs<ImmutableDictionary<String,Object>>('GET',url,false);
     end;

@@ -1,10 +1,11 @@
 ﻿namespace Moshine.Api.Weather;
 
 uses
-  RemObjects.Elements.RTL,
+  Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.Aeris,
-  Moshine.Api.Weather.Proxies;
+  Moshine.Api.Weather.Proxies,
+  RemObjects.Elements.RTL;
 
 type
 
@@ -25,7 +26,7 @@ type
 
     method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
     begin
-      var newForecast := new Forecast;
+      var newForecast := new AerisForecast;
       var values := Proxy.Forecast(forecastLocation);
       if(not assigned(values))then
       begin

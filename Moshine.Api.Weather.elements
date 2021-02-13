@@ -1,52 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <ProductVersion>3.5</ProductVersion>
+    <ProjectGuid>{2027DF70-59C1-4244-BA7C-2E7B3403EDDB}</ProjectGuid>
+    <OutputType>StaticLibrary</OutputType>
     <RootNamespace>Moshine.Api.Weather</RootNamespace>
-    <ProjectGuid>{149E31AF-CF12-41B0-AC2C-FF0C5363F877}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AssemblyName>Moshine.Api.Weather</AssemblyName>
     <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
-    <TargetFramework>.NETStandard</TargetFramework>
-    <Mode>Echoes</Mode>
+    <DefaultUses>RemObjects.Elements.RTL</DefaultUses>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <Optimize>False</Optimize>
     <OutputPath>.\Bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE;</DefineConstants>
-    <GeneratePDB>True</GeneratePDB>
-    <GenerateMDB>True</GenerateMDB>
     <EnableAsserts>True</EnableAsserts>
-    <CpuType>anycpu</CpuType>
-    <EnableUnmanagedDebugging>False</EnableUnmanagedDebugging>
+    <Optimize>False</Optimize>
+    <GenerateDebugInfo>True</GenerateDebugInfo>
+    <ConditionalDefines>DEBUG;TRACE;</ConditionalDefines>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\Bin\Release</OutputPath>
-    <CpuType>anycpu</CpuType>
-    <EnableUnmanagedDebugging>False</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Echoes.Core' ">
+    <Mode>Echoes</Mode>
+    <TargetFramework>.NETCore</TargetFramework>
+    <ConditionalDefines>NETCORE</ConditionalDefines>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Echoes.Standard' ">
+    <Mode>Echoes</Mode>
+    <TargetFramework>.NETStandard2.0</TargetFramework>
+    <ConditionalDefines>NETSTANDARD</ConditionalDefines>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.macOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>macOS</SDK>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>True</SupportMacCatalyst>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.tvOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>tvOS</SDK>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.watchOS' ">
+    <Mode>Island</Mode>
+    <SubMode>Darwin</SubMode>
+    <SDK>watchOS</SDK>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>iOS</SDK>
+    <SupportMacCatalyst>True</SupportMacCatalyst>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.macOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>macOS</SDK>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.tvOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>tvOS</SDK>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Target)' == 'Toffee.watchOS' ">
+    <Mode>Toffee</Mode>
+    <SDK>watchOS</SDK>
+    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Echoes">
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="#" />
     <Reference Include="Elements">
       <Private>True</Private>
     </Reference>
-    <RemoteProjectReference Include="github.com/mosh/Moshine.Foundation/Moshine.Foundation.elements:*">
+    <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/Moshine.Foundation.elements:*">
+      <Private>True</Private>
+    </RemoteProjectReference>
+    <RemoteProjectReference Include="github.com/Mosh/Moshine.Location/Moshine.Api.Location/Moshine.Api.Location.elements:Main">
       <Private>True</Private>
     </RemoteProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.pas" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.pas" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-    <Compile Include="Properties\Settings.Designer.pas" />
+    <Compile Include="WorldWeatherOnlineApi.pas" />
+    <Compile Include="StormGlassApi.pas" />
+    <Compile Include="Proxies\WorldWeatherOnlineProxy.pas" />
+    <Compile Include="Proxies\StormGlassProxy.pas" />
+    <Compile Include="Proxies\AerisProxy.pas" />
+    <Compile Include="Models\WorldWeatherOnline\WeatherIconUrl.pas" />
+    <Compile Include="Models\WorldWeatherOnline\WeatherDesc.pas" />
+    <Compile Include="Models\WorldWeatherOnline\Weather.pas" />
+    <Compile Include="Models\WorldWeatherOnline\Request.pas" />
+    <Compile Include="Models\WorldWeatherOnline\NearestArea.pas" />
+    <Compile Include="Models\WorldWeatherOnline\MarineWeatherInput.pas" />
+    <Compile Include="Models\WorldWeatherOnline\MarineWeather.pas" />
+    <Compile Include="Models\WorldWeatherOnline\Hourly.pas" />
+    <Compile Include="Models\WorldWeatherOnline\Data.pas" />
+    <Compile Include="Models\WorldWeatherOnline\Astronomy.pas" />
+    <Compile Include="Models\WeatherConstants.pas" />
+    <Compile Include="Models\StormGlass\Value.pas" />
+    <Compile Include="Models\StormGlass\StringValue.pas" />
+    <Compile Include="Models\StormGlass\Meta.pas" />
+    <Compile Include="Models\StormGlass\IntegerValue.pas" />
+    <Compile Include="Models\StormGlass\Information.pas" />
+    <Compile Include="Models\StormGlass\Hour.pas" />
+    <Compile Include="Models\StormGlass\Forecast.pas" />
+    <Compile Include="Models\StormGlass\DoubleValue.pas" />
+    <Compile Include="Models\StormGlass\CurrentConditions.pas" />
+    <Compile Include="Models\StormGlass\AtTime.pas" />
+    <Compile Include="Models\IForecast.pas" />
+    <Compile Include="Models\ICurrentConditions.pas" />
+    <Compile Include="Models\IAtTime.pas" />
+    <Compile Include="Models\Aeris\Profile.pas" />
+    <Compile Include="Models\Aeris\Period.pas" />
+    <Compile Include="Models\Aeris\Forecast.pas" />
+    <Compile Include="IWeatherApi.pas" />
+    <Compile Include="AerisWeatherApi.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
-  <Import Project="Moshine.Api.Weather.Shared.projitems" Label="Shared" />
- </Project>
+</Project>

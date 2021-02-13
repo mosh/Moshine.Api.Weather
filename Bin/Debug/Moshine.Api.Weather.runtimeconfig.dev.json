@@ -1,0 +1,10 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/JohnMoshakis/Library/Application Support/RemObjects Software/EBuild/Packages/NuGet",
+      "/Users/JohnMoshakis/.nuget/packages/",
+      "/Users/JohnMoshakis/.dotnet/NuGetFallbackFolder/",
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ]
+  }
+}
