@@ -124,8 +124,6 @@ type
 
         var timeNode := hourItem.Item['time'];
 
-        writeln($'StringValue is {timeNode.StringValue}');
-
         newHour.Time := DateTime.ParseISO8601DateTime(timeNode.StringValue);
 
         for each paramValue in newForecast.Meta.params do
