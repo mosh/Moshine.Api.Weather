@@ -7,14 +7,14 @@ uses
 
 type
 
-  StormGlassApi = public class(ProxyBase)
+  StormGlassApi = public class(WeatherApiBase)
   private
     proxy:StormGlassProxy;
   public
 
-    constructor(formatter:Formatter; apiKey:String);
+    constructor(apiKey:String);
     begin
-      proxy := new StormGlassProxy(formatter, apiKey);
+      proxy := new StormGlassProxy(Formatter, apiKey);
     end;
 
     method GetForecast(location:LocationCoordinate2D):IForecast; override;

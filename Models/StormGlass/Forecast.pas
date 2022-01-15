@@ -10,13 +10,13 @@ type
   StormGlassForecast = public class(IForecast)
   private
     _times:List<IAtTime>;
-    _formatter:Formatter;
+    _formatter:WeatherApiFormatter;
 
   public
     property Hours:List<Hour>;
     property Meta:Meta;
 
-    constructor(formatter:Formatter);
+    constructor(formatter:WeatherApiFormatter);
     begin
       _formatter := formatter;
     end;

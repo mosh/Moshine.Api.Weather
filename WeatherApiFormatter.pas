@@ -6,7 +6,7 @@ uses
 
 type
 
-  Formatter = public class
+  WeatherApiFormatter = public class
   public
 
     property digits:Integer := 2;

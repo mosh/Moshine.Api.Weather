@@ -16,10 +16,10 @@ type
 
     property ApiKey:String;
 
-    _formatter:Formatter;
+    _formatter:WeatherApiFormatter;
   public
 
-    constructor(formatter:Formatter; apiKeyValue:String);
+    constructor(formatter:WeatherApiFormatter; apiKeyValue:String);
     begin
       ApiKey := apiKeyValue;
       _formatter := formatter;

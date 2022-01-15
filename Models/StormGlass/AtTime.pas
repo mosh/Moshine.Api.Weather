@@ -9,7 +9,7 @@ type
   AtTime = public class(IAtTime)
   private
     _someHour:Hour;
-    _formatter:Formatter;
+    _formatter:WeatherApiFormatter;
 
     method getDoubleValue(name:String):Double;
     begin
@@ -24,7 +24,7 @@ type
 
   public
 
-    constructor(formatter:Formatter;someHour:Hour);
+    constructor(formatter:WeatherApiFormatter;someHour:Hour);
     begin
       _someHour := someHour;
       _formatter := formatter;

@@ -8,7 +8,7 @@ uses
 
 type
 
-  WorldWeatherOnlineApi = public class(ProxyBase)
+  WorldWeatherOnlineApi = public class(WeatherApiBase)
   private
     property proxy:WorldWeatherOnlineProxy;
   protected
