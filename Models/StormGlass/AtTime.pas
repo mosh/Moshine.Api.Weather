@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Models.StormGlass;
 
 uses
+  Moshine.Api.Weather,
   Moshine.Api.Weather.Models, RemObjects.Elements.RTL;
 
 type
@@ -8,6 +9,7 @@ type
   AtTime = public class(IAtTime)
   private
     _someHour:Hour;
+    _formatter:Formatter;
 
     method getDoubleValue(name:String):Double;
     begin
@@ -17,13 +19,15 @@ type
         writeLn($'No values for {name}');
         exit 0;
       end;
-      exit DoubleValue(item.Values.First).Value;
+      exit _formatter.Format(DoubleValue(item.Values.First).Value);
     end;
 
   public
-    constructor(someHour:Hour);
+
+    constructor(formatter:Formatter;someHour:Hour);
     begin
       _someHour := someHour;
+      _formatter := formatter;
     end;
 
     property Time:DateTime read

@@ -6,21 +6,23 @@ uses
   Moshine.Api.Weather.Models.StormGlass, Moshine.Api.Weather.Proxies;
 
 type
-  StormGlassApi = public class(IWeatherApi)
+
+  StormGlassApi = public class(ProxyBase)
   private
     proxy:StormGlassProxy;
   public
-    constructor(apiKey:String);
+
+    constructor(formatter:Formatter; apiKey:String);
     begin
-      proxy := new StormGlassProxy(apiKey);
+      proxy := new StormGlassProxy(formatter, apiKey);
     end;
 
-    method GetForecast(location:LocationCoordinate2D):IForecast;
+    method GetForecast(location:LocationCoordinate2D):IForecast; override;
     begin
       exit proxy.GetForecast(location);
     end;
 
-    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions; override;
     begin
       exit proxy.GetCurrentConditions(location);
     end;

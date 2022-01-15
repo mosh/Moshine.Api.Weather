@@ -8,7 +8,7 @@ uses
 
 type
 
-  WorldWeatherOnlineApi = public class(IWeatherApi)
+  WorldWeatherOnlineApi = public class(ProxyBase)
   private
     property proxy:WorldWeatherOnlineProxy;
   protected
@@ -18,12 +18,12 @@ type
       proxy := new WorldWeatherOnlineProxy(apiKey);
     end;
 
-    method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
+    method GetForecast(forecastLocation:LocationCoordinate2D):IForecast; override;
     begin
       exit proxy.GetMarineForecast(forecastLocation);
     end;
 
-    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions; override;
     begin
 
     end;

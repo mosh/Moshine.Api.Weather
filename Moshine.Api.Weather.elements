@@ -138,6 +138,8 @@
     <Compile Include="Models\Aeris\Forecast.pas" />
     <Compile Include="IWeatherApi.pas" />
     <Compile Include="AerisWeatherApi.pas" />
+    <Compile Include="Formatter.pas" />
+    <Compile Include="ProxyBase.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

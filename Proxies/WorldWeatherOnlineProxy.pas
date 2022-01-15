@@ -16,7 +16,7 @@ type
       ApiKey := apiKeyValue;
     end;
 
-    method GetMarineForecast(forecastLocation:LocationCoordinate2D):MarineWeather;
+    method GetMarineForecast(forecastLocation:LocationCoordinate2D):IForecast;
     begin
       var url := $'https://api.worldweatheronline.com/premium/v1/marine.ashx?key={ApiKey}&q={forecastLocation.latitude},{forecastLocation.latitude}&format=json&includelocation=yes&tide=yes';
       var stringResponse := WebRequestAsString('GET',url,nil,false);

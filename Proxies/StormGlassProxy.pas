@@ -1,6 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Proxies;
 
 uses
+  Moshine.Api.Weather,
   Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
@@ -14,11 +15,14 @@ type
     const ToKnots:Double = 1.94384;
 
     property ApiKey:String;
+
+    _formatter:Formatter;
   public
 
-    constructor(apiKeyValue:String);
+    constructor(formatter:Formatter; apiKeyValue:String);
     begin
       ApiKey := apiKeyValue;
+      _formatter := formatter;
 
       self._requestBuilder := method (url: String; webMethod: String; addAuthentication: Boolean): Moshine.Foundation.Web.HttpRequest
         begin
@@ -44,7 +48,7 @@ type
     end;
 
 
-    method GetCurrentConditions(location:LocationCoordinate2D):CurrentConditions;
+    method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
     begin
 
       var since := DateTime.TimeSinceEpoch;
@@ -92,7 +96,7 @@ type
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
-      var newForecast := new StormGlassForecast;
+      var newForecast := new StormGlassForecast(_formatter);
 
       var document := JsonDocument.FromString(stringValues);
 
