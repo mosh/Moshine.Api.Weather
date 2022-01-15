@@ -80,8 +80,8 @@ type
 
       var current := new CurrentConditions;
 
-      current.WindSpeedGusting := Double(gustValue) * ToKnots;
-      current.WindSpeed := Double(windSpeedValue) * ToKnots;
+      current.WindSpeedGusting := _formatter.Format(Double(gustValue) * ToKnots);
+      current.WindSpeed := _formatter.Format(Double(windSpeedValue) * ToKnots);
       current.WindDirection := DegreesToCompass(windDirectionValue);
       current.ShortWindAsString := '';
       current.Weather := '';
