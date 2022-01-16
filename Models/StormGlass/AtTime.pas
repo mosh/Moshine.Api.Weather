@@ -16,7 +16,6 @@ type
       var item := _someHour.Information.FirstOrDefault(i -> i.Name = name);
       if(not item.Values.Any)then
       begin
-        writeLn($'No values for {name}');
         exit 0;
       end;
       exit _formatter.Format(DoubleValue(item.Values.First).Value);
