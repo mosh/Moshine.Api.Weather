@@ -1,7 +1,7 @@
 ﻿namespace Moshine.Api.Weather.Extensions;
 
 type
-  DoubleExtensions = public extension class(Double)
+  WeatherDoubleExtensions = public extension class(Double)
   private
   protected
   public

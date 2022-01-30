@@ -1,7 +1,7 @@
-﻿namespace Moshine.Api.Weather;
+﻿namespace Moshine.Api.Weather.Extensions;
 
 type
-  StringExtensions = public extension class(String)
+  WeatherStringExtensions = public extension class(String)
   private
   protected
   public
