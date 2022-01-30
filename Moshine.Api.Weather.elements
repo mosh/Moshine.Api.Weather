@@ -140,6 +140,13 @@
     <Compile Include="AerisWeatherApi.pas" />
     <Compile Include="WeatherApiBase.pas" />
     <Compile Include="WeatherApiFormatter.pas" />
+    <Compile Include="Delegates\WeatherURLSessionDownloadDelegate.pas" />
+    <Compile Include="Converters\StormGlassConverter.pas" />
+    <Compile Include="Interfaces\IConverter.pas" />
+    <Compile Include="Extensions\StringExtensions.pas" />
+    <Compile Include="Extensions\DoubleExtensions.pas" />
+    <Compile Include="Providers\CurrentConditionsDataProvider.pas" />
+    <Compile Include="Providers\ForecastDataProvider.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
