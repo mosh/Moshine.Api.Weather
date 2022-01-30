@@ -135,6 +135,8 @@ type
 
       end;
 
+      exit newForecast;
+
     end;
 
   end;
