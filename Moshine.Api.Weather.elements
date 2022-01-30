@@ -147,6 +147,8 @@
     <Compile Include="Extensions\DoubleExtensions.pas" />
     <Compile Include="Providers\CurrentConditionsDataProvider.pas" />
     <Compile Include="Providers\ForecastDataProvider.pas" />
+    <Compile Include="Interfaces\IUrlProvider.pas" />
+    <Compile Include="Providers\StormGlassUrlProvider.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

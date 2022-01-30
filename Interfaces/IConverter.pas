@@ -1,4 +1,4 @@
-﻿namespace Moshine.Api.Weather;
+﻿namespace Moshine.Api.Weather.Interfaces;
 
 uses
   Moshine.Api.Weather.Models;

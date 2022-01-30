@@ -4,6 +4,7 @@ uses
   Moshine.Foundation,
   Moshine.Api.Location.Models,
   Moshine.Api.Weather.Extensions,
+  Moshine.Api.Weather.Interfaces,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
   RemObjects.Elements.RTL;

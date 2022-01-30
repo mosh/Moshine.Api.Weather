@@ -15,12 +15,14 @@ type
     property ApiKey:String;
 
     _formatter:WeatherApiFormatter;
+    _provider:StormGlassUrlProvider;
   public
 
     constructor(formatter:WeatherApiFormatter; apiKeyValue:String);
     begin
       ApiKey := apiKeyValue;
       _formatter := formatter;
+      _provider := new StormGlassUrlProvider;
 
       self._requestBuilder := method (url: String; webMethod: String; addAuthentication: Boolean): Moshine.Foundation.Web.HttpRequest
         begin
@@ -41,9 +43,7 @@ type
     method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
     begin
 
-      var since := DateTime.TimeSinceEpoch;
-
-      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
+      var url := _provider.ForCurrentConditions(location);
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
@@ -55,7 +55,8 @@ type
 
     method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
-      var url := $'https://api.stormglass.io/v1/weather/point?lat={location.latitude}&lng={location.longitude}';
+
+      var url := _provider.ForForecast(location);
 
       var stringValues := WebRequestAsString('GET', url, nil, true);
 
