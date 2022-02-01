@@ -22,7 +22,7 @@ type
     begin
       ApiKey := apiKeyValue;
       _formatter := formatter;
-      _provider := new StormGlassUrlProvider;
+      _provider := new StormGlassUrlProvider(ApiKey);
 
       self._requestBuilder := method (url: String; webMethod: String; addAuthentication: Boolean): Moshine.Foundation.Web.HttpRequest
         begin
@@ -43,9 +43,9 @@ type
     method GetCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
     begin
 
-      var url := _provider.ForCurrentConditions(location);
+      var request := _provider.ForCurrentConditions(location);
 
-      var stringValues := WebRequestAsString('GET', url, nil, true);
+      var stringValues := WebRequestAsString(request);
 
       var converter := new StormGlassConverter(_formatter);
 
@@ -56,9 +56,9 @@ type
     method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
 
-      var url := _provider.ForForecast(location);
+      var request := _provider.ForForecast(location);
 
-      var stringValues := WebRequestAsString('GET', url, nil, true);
+      var stringValues := WebRequestAsString(request);
 
       var converter := new StormGlassConverter(_formatter);
 

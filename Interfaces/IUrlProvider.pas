@@ -2,13 +2,15 @@
 
 
 uses
-  Moshine.Api.Location.Models, RemObjects.Elements.RTL;
+  Moshine.Api.Location.Models,
+  Moshine.Foundation.Web,
+  RemObjects.Elements.RTL;
 
 type
   IUrlProvider = public interface
 
-    method ForCurrentConditions(location:LocationCoordinate2D):String;
-    method ForForecast(location:LocationCoordinate2D):String;
+    method ForCurrentConditions(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
+    method ForForecast(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
   end;
 
 end.

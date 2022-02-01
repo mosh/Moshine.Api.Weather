@@ -4,23 +4,41 @@ uses
   Moshine.Api.Location.Models,
   Moshine.Api.Weather.Interfaces,
   Moshine.Foundation,
+  Moshine.Foundation.Web,
   RemObjects.Elements.RTL;
 
 type
+
   StormGlassUrlProvider = public class(IUrlProvider)
-  public
 
+  private
+    _keyCode:String;
 
-    method ForCurrentConditions(location:LocationCoordinate2D):String;
+    method HttpRequestForStormGlass(url:String): Moshine.Foundation.Web.HttpRequest;
     begin
-      var since := DateTime.TimeSinceEpoch;
-
-      exit $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
+      var request := new Moshine.Foundation.Web.HttpRequest(url,HttpRequestMode.Get);
+      request.AddHeader('Authorization',_keyCode);
+      exit request;
     end;
 
-    method ForForecast(location:LocationCoordinate2D):String;
+
+  public
+
+    constructor(keyCode:String);
     begin
-      exit $'https://api.stormglass.io/v1/weather/point?lat={location.latitude}&lng={location.longitude}';
+      _keyCode := keyCode;
+    end;
+
+
+    method ForCurrentConditions(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
+    begin
+      var since := DateTime.TimeSinceEpoch;
+      exit HttpRequestForStormGlass($'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}');
+    end;
+
+    method ForForecast(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
+    begin
+      exit HttpRequestForStormGlass($'https://api.stormglass.io/v1/weather/point?lat={location.latitude}&lng={location.longitude}');
     end;
   end;
 

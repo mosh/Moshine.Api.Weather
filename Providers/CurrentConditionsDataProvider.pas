@@ -8,7 +8,7 @@ uses
 
 type
 
-  CurrentConditionsURLDownloadBlock = public block(conditions:ICurrentConditions);
+    CurrentConditionsURLDownloadBlock = public block(conditions:ICurrentConditions);
 
   [Cocoa]
   CurrentConditionsDataProvider = public class(URLSessionDownloadDelegate)
