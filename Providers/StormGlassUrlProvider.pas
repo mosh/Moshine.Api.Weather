@@ -16,7 +16,7 @@ type
 
     method HttpRequestForStormGlass(url:String): Moshine.Foundation.Web.HttpRequest;
     begin
-      var request := new Moshine.Foundation.Web.HttpRequest(url,HttpRequestMode.Get);
+      var request := new Moshine.Foundation.  Web.HttpRequest('GET',url);
       request.AddHeader('Authorization',_keyCode);
       exit request;
     end;
