@@ -38,7 +38,7 @@ type
 
     method ForForecast(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
     begin
-      exit HttpRequestForStormGlass($'https://api.stormglass.io/v1/weather/point?lat={location.latitude}&lng={location.longitude}');
+      exit HttpRequestForStormGlass($'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}');
     end;
   end;
 

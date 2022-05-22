@@ -4,6 +4,7 @@ uses
   Moshine.Api.Weather.Models, RemObjects.Elements.RTL;
 
 type
+
   MarineWeather = public class(IForecast)
   public
     var data: Data;

@@ -6,7 +6,7 @@ uses
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.WorldWeatherOnline, RemObjects.Elements.RTL;
 
-type
+/*type
 
   WorldWeatherOnlineApi = public class(WeatherApiBase)
   private
@@ -29,5 +29,6 @@ type
     end;
 
   end;
+  */
 
 end.
