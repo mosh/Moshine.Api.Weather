@@ -35,7 +35,8 @@
     <SDK>macOS</SDK>
     <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
-  </PropertyGroup>
+     <DefaultObjectModel>Cocoa</DefaultObjectModel>
+ </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
