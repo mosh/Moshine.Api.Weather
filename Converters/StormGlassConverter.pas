@@ -17,6 +17,24 @@ type
   private
     _formatter:WeatherApiFormatter;
 
+    method ToValue(key:String; value:JsonNode):Value;
+    begin
+      var generalValue:Value := nil;
+
+      case value type of
+        JsonFloatValue: generalValue := new DoubleValue(Value := value.FloatValue);
+        JsonIntegerValue: generalValue := new IntegerValue(Value := value.IntegerValue);
+        JsonStringValue: generalValue := new StringValue(Value := value.StringValue);
+        else
+          raise new Exception('unexpected json type');
+      end;
+
+      generalValue.source := key;
+
+      exit generalValue;
+
+    end;
+
   public
     constructor(formatter:WeatherApiFormatter);
     begin
@@ -59,6 +77,7 @@ type
 
     end;
 
+
     method ToForecast(someJson:String):IForecast;
     begin
 
@@ -91,7 +110,7 @@ type
       newForecast.Hours := new List<Hour>;
 
       for each hourItem in hoursNode do
-        begin
+      begin
         var newHour := new Hour;
         newHour.Information := new List<Information>;
 
@@ -100,35 +119,61 @@ type
         newHour.Time := DateTime.ParseISO8601DateTime(timeNode.StringValue);
 
         for each paramValue in newForecast.Meta.params do
+        begin
+
+          var paramValues := hourItem.Item[paramValue];
+
+          if(paramValues is JsonObject) then
           begin
-          var values := hourItem.Item[paramValue] as JsonArray;
+            var newInformation := new Information;
+            newInformation.Name := paramValue;
+            newInformation.Values := new List<Value>;
 
-          var newInformation := new Information;
-          newInformation.Name := paramValue;
+            var paramAsJsonObject := paramValues as JsonObject;
 
-          newInformation.Values := new List<Value>;
-
-          for each valueItem in values do
+            for each paramProperty in paramAsJsonObject do
             begin
-            var sourceValueItem := valueItem.Item['value'];
-
-            var generalValue:Value := nil;
-
-            case sourceValueItem type of
-              JsonFloatValue: generalValue := new DoubleValue(Value := sourceValueItem.FloatValue);
-              JsonIntegerValue: generalValue := new IntegerValue(Value := sourceValueItem.IntegerValue);
-              JsonStringValue: generalValue := new StringValue(Value := sourceValueItem.StringValue);
-              else
-                raise new Exception('unexpected json type');
+              var newValue := ToValue(paramProperty.Item1, paramProperty.Item2);
+              newInformation.Values.Add(newValue);
             end;
 
-            generalValue.source := valueItem.Item['source'].StringValue;
+            newHour.Information.Add(newInformation);
 
-            newInformation.Values.Add(generalValue);
+          end
+          else if (paramValues is JsonArray) then
+          begin
+
+            var values :=  paramValues as JsonArray;
+
+            var newInformation := new Information;
+
+            newInformation.Name := paramValue;
+
+            newInformation.Values := new List<Value>;
+
+            for each valueItem in values do
+            begin
+              var sourceValueItem := valueItem.Item['value'];
+
+              var generalValue:Value := nil;
+
+              case sourceValueItem type of
+                JsonFloatValue: generalValue := new DoubleValue(Value := sourceValueItem.FloatValue);
+                JsonIntegerValue: generalValue := new IntegerValue(Value := sourceValueItem.IntegerValue);
+                JsonStringValue: generalValue := new StringValue(Value := sourceValueItem.StringValue);
+                else
+                  raise new Exception('unexpected json type');
+              end;
+
+              generalValue.source := valueItem.Item['source'].StringValue;
+
+              newInformation.Values.Add(generalValue);
+
+            end;
+
+            newHour.Information.Add(newInformation);
 
           end;
-
-          newHour.Information.Add(newInformation);
 
         end;
 
