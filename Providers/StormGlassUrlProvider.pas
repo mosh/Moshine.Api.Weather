@@ -32,13 +32,20 @@ type
 
     method ForCurrentConditions(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
     begin
-      var since := DateTime.TimeSinceEpoch;
-      exit HttpRequestForStormGlass($'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}');
+      var since := DateTime.TimeSinceEpochNow;
+      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={since}&end={since}';
+      exit HttpRequestForStormGlass(url);
     end;
 
     method ForForecast(location:LocationCoordinate2D):Moshine.Foundation.Web.HttpRequest;
     begin
-      exit HttpRequestForStormGlass($'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}');
+
+      var startTime := DateTime.UtcNow;
+      var endTime := startTime.AddHours(24);
+      var startValue := startTime.TimeSinceEpoch;
+      var endValue := endTime.TimeSinceEpoch;
+      var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params=windDirection,gust,windSpeed&start={startValue}&end={endValue}';
+      exit HttpRequestForStormGlass(url);
     end;
   end;
 

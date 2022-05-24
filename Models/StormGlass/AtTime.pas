@@ -14,7 +14,7 @@ type
     method getDoubleValue(name:String):Double;
     begin
       var item := _someHour.Information.FirstOrDefault(i -> i.Name = name);
-      if(not item.Values.Any)then
+      if((not assigned(item)) or (not item.Values.Any))then
       begin
         exit 0;
       end;
