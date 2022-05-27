@@ -40,7 +40,7 @@
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>iOS</SDK>
-    <SupportMacCatalyst>True</SupportMacCatalyst>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
     <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
@@ -65,7 +65,7 @@
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
     <Mode>Toffee</Mode>
     <SDK>iOS</SDK>
-    <SupportMacCatalyst>True</SupportMacCatalyst>
+    <SupportMacCatalyst>False</SupportMacCatalyst>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
     <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
