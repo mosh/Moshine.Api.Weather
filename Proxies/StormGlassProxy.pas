@@ -7,6 +7,8 @@ uses
   Moshine.Api.Weather.Models.StormGlass,
   Moshine.Foundation,
   Moshine.Foundation.Web, RemObjects.Elements.RTL;
+
+/*
 type
 
   StormGlassProxy = public class(WebProxy)
@@ -67,4 +69,5 @@ type
     end;
 
   end;
+*/
 end.

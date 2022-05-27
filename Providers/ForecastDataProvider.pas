@@ -6,6 +6,7 @@ uses
   Foundation,
   Moshine.Api.Weather.Models;
 
+/*
 type
 
   ForecastURLDownloadBlock = public block(forecast:IForecast);
@@ -46,7 +47,7 @@ type
     end;
 
   end;
-
+*/
 {$ENDIF}
 
 

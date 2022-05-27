@@ -6,8 +6,10 @@ uses
   Moshine.Api.Weather.Models,
   RemObjects.Elements.RTL;
 
+
 type
-  AerisProxy = public class(WebProxy)
+
+  AerisProxy = public class//(WebProxy)
   private
     const apiBase = 'https://api.aerisapi.com/';
 
@@ -21,13 +23,14 @@ type
       clientSecret := clientSecretValue;
     end;
 
-    method Forecast(location: LocationCoordinate2D):ImmutableDictionary<String,Object>;
+    method Forecast(/*location: LocationCoordinate2D*/):ImmutableDictionary<String,Object>;
     begin
-      var locationString := $'{location.latitude},{location.longitude}';
-      var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
-      exit WebRequestAs<ImmutableDictionary<String,Object>>('GET',url,false);
+      //var locationString := $'{location.latitude},{location.longitude}';
+      //var url := $'{apiBase}/forecasts?client_id={clientId}&client_secret={clientSecret}&p={locationString}&radius=400mi';
+      //exit WebRequestAs<ImmutableDictionary<String,Object>>('GET',url,false);
     end;
 
   end;
+
 
 end.

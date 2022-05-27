@@ -9,6 +9,7 @@ uses
   Moshine.Api.Weather.Models.StormGlass,
   RemObjects.Elements.RTL;
 
+/*
 type
 
   StormGlassConverter = public class(IConverter)
@@ -186,5 +187,5 @@ type
     end;
 
   end;
-
+*/
 end.

@@ -1,5 +1,6 @@
 ﻿namespace Moshine.Api.Weather;
 
+/*
 {$IFDEF TOFFEE OR DARWIN}
 
 uses
@@ -50,5 +51,5 @@ type
   end;
 
 {$ENDIF}
-
+*/
 end.

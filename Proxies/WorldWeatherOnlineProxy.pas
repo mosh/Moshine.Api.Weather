@@ -6,7 +6,9 @@ uses
   Moshine.Api.Weather.Models.WorldWeatherOnline,
   RemObjects.Elements.RTL, Moshine.Foundation.Web;
 
+/*
 type
+
   WorldWeatherOnlineProxy = public class(WebProxy)
   private
     property ApiKey:String;
@@ -139,5 +141,6 @@ type
       exit weather;
     end;
   end;
+  */
 
 end.

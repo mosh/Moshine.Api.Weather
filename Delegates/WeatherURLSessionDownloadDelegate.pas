@@ -14,6 +14,7 @@ type
 
   private
     _block:WeatherURLDownloadBlock;
+
   public
 
     constructor (completionBlock:WeatherURLDownloadBlock);

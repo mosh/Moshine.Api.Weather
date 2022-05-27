@@ -7,9 +7,10 @@ uses
   Moshine.Api.Weather.Proxies,
   RemObjects.Elements.RTL;
 
+
 type
 
-  AerisWeatherApi = public class(IWeatherApi)
+  AerisWeatherApi = public class //(/*IWeatherApi*/)
   private
     property Proxy:AerisProxy;
 
@@ -24,55 +25,60 @@ type
 
     end;
 
-    method GetForecast(forecastLocation:LocationCoordinate2D):IForecast;
+    method GetForecast; //(forecastLocation:LocationCoordinate2D):IForecast;
     begin
-      var newForecast := new AerisForecast;
-      var values := Proxy.Forecast(forecastLocation);
+
+      //var newForecast := new AerisForecast;
+
+
+      var values := Proxy.Forecast(/*forecastLocation*/);
+      /*
       if(not assigned(values))then
       begin
         exit nil;
       end;
-
       var value := values['success'];
 
       if((assigned(value)) and (Boolean(value)))then
       begin
-        /*
-        var response:Array of PlatformImmutableDictionary<String,Object> := values['response'];
 
-        newForecast.Interval := response[0]['interval'];
-        var profile:PlatformImmutableDictionary<String,Object> := response[0]['profile'];
+        //var response:Array of PlatformImmutableDictionary<String,Object> := values['response'];
 
-        newForecast.Profile.TimeZone := profile['tz'];
-        newForecast.Profile.ElevationFeet := profile['elevFT'];
-        newForecast.Profile.ElevationMeters := profile['elevM'];
+        //newForecast.Interval := response[0]['interval'];
+        //var profile:PlatformImmutableDictionary<String,Object> := response[0]['profile'];
 
-        var location:PlatformImmutableDictionary<String,Object> := response[0]['loc'];
+        //newForecast.Profile.TimeZone := profile['tz'];
+        //newForecast.Profile.ElevationFeet := profile['elevFT'];
+        //newForecast.Profile.ElevationMeters := profile['elevM'];
 
-        newForecast.Location.Longitude := location['long'];
-        newForecast.Location.Lattitude := location['lat'];
+        //var location:PlatformImmutableDictionary<String,Object> := response[0]['loc'];
 
-        var periods:array of PlatformImmutableDictionary<String,Object> := response[0]['periods'];
+        //newForecast.Location.longitude := location['long'];
+        //newForecast.Location.Lattitude := location['lat'];
 
-        for each period in periods do
-        begin
-          var newPeriod := new Period;
-          newPeriod.Weather := period['weather'];
+        //var periods:array of PlatformImmutableDictionary<String,Object> := response[0]['periods'];
 
-          newPeriod.MaxTemperatureCentigrade := period['maxTempC'];
-          newPeriod.MinTemperatureCentigrade := period['minTempC'];
-          newPeriod.AverageTemperatureCentigrade := period['avgTempC'];
-          newPeriod.WindDirection := period['windDir'];
-          newPeriod.WindGusts := period['windGustsKTS'];
-          newPeriod.WindSpeed := period['windSpeedKTS'];
+        //for each period in periods do
+        //begin
+          //var newPeriod := new Period;
+          //newPeriod.Weather := period['weather'];
 
-          newForecast.Periods.Add(newPeriod);
-        end;
-        */
+          //newPeriod.MaxTemperatureCentigrade := period['maxTempC'];
+          //newPeriod.MinTemperatureCentigrade := period['minTempC'];
+          //newPeriod.AverageTemperatureCentigrade := period['avgTempC'];
+          //newPeriod.WindDirection := period['windDir'];
+          //newPeriod.WindGusts := period['windGustsKTS'];
+          //newPeriod.WindSpeed := period['windSpeedKTS'];
+
+          //newForecast.Periods.Add(newPeriod);
+        //end;
+
 
       end;
       exit newForecast;
+      */
     end;
 
   end;
+
 end.

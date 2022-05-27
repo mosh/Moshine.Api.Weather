@@ -5,6 +5,7 @@ uses
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass, Moshine.Api.Weather.Proxies;
 
+/*
 type
 
   StormGlassApi = public class(WeatherApiBase)
@@ -28,4 +29,5 @@ type
     end;
 
   end;
+*/
 end.
