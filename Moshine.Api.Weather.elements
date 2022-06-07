@@ -149,6 +149,10 @@
     <Compile Include="Providers\ForecastDataProvider.pas" />
     <Compile Include="Interfaces\IUrlProvider.pas" />
     <Compile Include="Providers\StormGlassUrlProvider.pas" />
+    <Compile Include="Models\ITides.pas" />
+    <Compile Include="Models\Tide.pas" />
+    <Compile Include="Models\Station.pas" />
+    <Compile Include="Models\StormGlass\Tides.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

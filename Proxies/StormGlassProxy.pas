@@ -2,6 +2,7 @@
 
 uses
   Moshine.Api.Weather,
+  Moshine.Api.Weather.Converters,
   Moshine.Api.Location.Models,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
@@ -65,6 +66,42 @@ type
       exit converter.ToForecast(stringValues);
 
     end;
+
+    method GetCompleteCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+      var request := _provider.ForCompleteCurrentConditions(location);
+
+      var stringValues := WebRequestAsString(request);
+
+      var converter := new StormGlassConverter(_formatter);
+
+      exit converter.ToCurrentConditions(stringValues);
+
+    end;
+
+    method GetCompleteForecast(location:LocationCoordinate2D):IForecast;
+    begin
+
+      var request := _provider.ForCompleteForecast(location);
+
+      var stringValues := WebRequestAsString(request);
+
+      var converter := new StormGlassConverter(_formatter);
+
+      exit converter.ToForecast(stringValues);
+
+    end;
+
+    method GetCurrentTides(location:LocationCoordinate2D):ITides;
+    begin
+      var request := _provider.ForCurrentTides(location);
+      var stringValues := WebRequestAsString(request);
+
+      var converter := new StormGlassConverter(_formatter);
+
+      exit converter.ToTides(stringValues);
+    end;
+
 
   end;
 end.

@@ -1,4 +1,4 @@
-﻿namespace Moshine.Api.Weather;
+﻿namespace Moshine.Api.Weather.Converters;
 
 uses
   Moshine.Foundation,
@@ -7,6 +7,7 @@ uses
   Moshine.Api.Weather.Interfaces,
   Moshine.Api.Weather.Models,
   Moshine.Api.Weather.Models.StormGlass,
+  Moshine.Api.Weather,
   RemObjects.Elements.RTL;
 
 type
@@ -183,6 +184,42 @@ type
 
       exit newForecast;
 
+    end;
+
+    method ToTides(someJson:String):ITides;
+    begin
+      var tides := new Tides;
+      var document := JsonDocument.FromString(someJson);
+
+      var rootNode := document.Root;
+      var dataNode := rootNode.Item['data'];
+
+      for each tide in dataNode as JsonArray do
+      begin
+        if (assigned(tide))then
+        begin
+          var newTide := new Tide;
+          newTide.Height := tide.Item['height'].FloatValue;
+          newTide.Time := DateTime.ParseISO8601DateTime(tide.Item['time'].StringValue);
+          newTide.Type := tide.Item['type'].StringValue;
+          tides.Tides.Add(newTide);
+        end;
+      end;
+
+      var stationNode := rootNode.Item['meta'].Item['station'];
+
+      tides.Station.Name := stationNode.Item['name'].StringValue;
+      tides.Station.Source := stationNode.Item['source'].StringValue;
+      tides.Station.Distance := stationNode.Item['distance'].IntegerValue;
+      tides.Station.Latitude := stationNode.Item['lat'].FloatValue;
+      tides.Station.Longitude := stationNode.Item['lng'].FloatValue;
+      //tides.Start := DateTime.ParseISO8601DateTime(rootNode.Item['meta'].Item['start'].StringValue);
+      //tides.End := DateTime.ParseISO8601DateTime(rootNode.Item['meta'].Item['end'].StringValue);
+      tides.Datum := rootNode.Item['meta'].Item['datum'].StringValue;
+      tides.Latitude := rootNode.Item['meta'].Item['lat'].FloatValue;
+      tides.Longitude := rootNode.Item['meta'].Item['lng'].FloatValue;
+
+      exit tides;
     end;
 
   end;
