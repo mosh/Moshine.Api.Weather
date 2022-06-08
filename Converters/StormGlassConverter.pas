@@ -214,8 +214,10 @@ type
       tides.Station.Latitude := stationNode.Item['lat'].FloatValue;
       tides.Station.Longitude := stationNode.Item['lng'].FloatValue;
 
-      tides.Start := DateTime.TryParse(rootNode.Item['meta'].Item['start'].StringValue);
-      tides.End := DateTime.TryParse(rootNode.Item['meta'].Item['end'].StringValue);
+      var aFormat := 'yyyy-MM-dd hh:mm';
+
+      tides.Start := DateTime.TryParse(rootNode.Item['meta'].Item['start'].StringValue, aFormat);
+      tides.End := DateTime.TryParse(rootNode.Item['meta'].Item['end'].StringValue, aFormat);
       tides.Datum := rootNode.Item['meta'].Item['datum'].StringValue;
       tides.Latitude := rootNode.Item['meta'].Item['lat'].FloatValue;
       tides.Longitude := rootNode.Item['meta'].Item['lng'].FloatValue;
