@@ -4,6 +4,7 @@
 
 uses
   Foundation,
+  Moshine.Api.Weather.Converters,
   Moshine.Api.Weather.Models;
 
 type
