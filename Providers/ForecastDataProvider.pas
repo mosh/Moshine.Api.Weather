@@ -26,7 +26,15 @@ type
     method URLSession(session: NSURLSession) downloadTask(downloadTask: NSURLSessionDownloadTask) didFinishDownloadingToURL(location: NSURL);
     begin
 
-      var value := new NSString withContentsOfURL(location);
+      var error:NSError;
+      var encoding:^NSStringEncoding;
+
+      var value := NSString.stringWithContentsOfURL(location) usedEncoding(encoding) error(var error);
+
+      if(assigned(error))then
+      begin
+        raise new Exception(error.description);
+      end;
 
       var formatter := new WeatherApiFormatter;
       var converter := new StormGlassConverter(formatter);

@@ -54,6 +54,19 @@ type
 
     end;
 
+
+    method GetForecast(location:LocationCoordinate2D; startTime:DateTime; endTime:DateTime):IForecast;
+    begin
+      var request := _provider.ForForecast(location, startTime, endTime);
+
+      var stringValues := WebRequestAsString(request);
+
+      var converter := new StormGlassConverter(_formatter);
+
+      exit converter.ToForecast(stringValues);
+
+    end;
+
     method GetForecast(location:LocationCoordinate2D):IForecast;
     begin
 
@@ -78,6 +91,20 @@ type
       exit converter.ToCurrentConditions(stringValues);
 
     end;
+
+    method GetCompleteForecast(location:LocationCoordinate2D; startTime:DateTime; endTime:DateTime):IForecast;
+    begin
+
+      var request := _provider.ForCompleteForecast(location, startTime, endTime);
+
+      var stringValues := WebRequestAsString(request);
+
+      var converter := new StormGlassConverter(_formatter);
+
+      exit converter.ToForecast(stringValues);
+
+    end;
+
 
     method GetCompleteForecast(location:LocationCoordinate2D):IForecast;
     begin
