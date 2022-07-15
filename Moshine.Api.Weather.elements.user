@@ -2,12 +2,12 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <PropertyGroup Condition="'$(Target)' == 'Toffee.iOS'">
-    <CrossBoxDeviceID>Generic iOS Device</CrossBoxDeviceID>
-    <CrossBoxDevice>iOS Device</CrossBoxDevice>
+    <CrossBoxDeviceID>00008101-0002312811F0001E</CrossBoxDeviceID>
+    <CrossBoxDevice>John Moshakis’s iPhone</CrossBoxDevice>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Target)' == 'Island.Darwin.iOS'">
-    <CrossBoxDeviceID>Generic iOS Device</CrossBoxDeviceID>
-    <CrossBoxDevice>iOS Device</CrossBoxDevice>
+    <CrossBoxDeviceID>00008101-0002312811F0001E</CrossBoxDeviceID>
+    <CrossBoxDevice>John Moshakis’s iPhone</CrossBoxDevice>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Target)' == 'Island.Darwin.watchOS'">
     <CrossBoxDeviceID>Generic watchOS Device</CrossBoxDeviceID>

@@ -36,10 +36,10 @@ type
     begin
       var value := '';
 
-      for x:= 0 to values.length-1 do
+      for x:= 0 to values.Length-1 do
       begin
         value := value + values[x];
-        if(x < values.length -1)then
+        if(x < values.Length -1)then
         begin
           value := value + ',';
         end;
@@ -52,6 +52,7 @@ type
     begin
       var since := DateTime.TimeSinceEpochNow;
       var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params={ArrayAsString(parameters)}&start={since}&end={since}';
+      Log($'{url}');
       exit HttpRequestForStormGlass(url);
     end;
 
@@ -69,6 +70,9 @@ type
       var startValue := startTime.TimeSinceEpoch;
       var endValue := endTime.TimeSinceEpoch;
       var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params={ArrayAsString(parameters)}&start={startValue}&end={endValue}';
+
+      Log($'{url}');
+
       exit HttpRequestForStormGlass(url);
     end;
 

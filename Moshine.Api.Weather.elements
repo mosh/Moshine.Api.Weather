@@ -64,10 +64,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.iOS' ">
     <Mode>Toffee</Mode>
-    <SDK>iOS</SDK>
+    <SubMode>iOS</SubMode>
     <SupportMacCatalyst>False</SupportMacCatalyst>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
-    <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
@@ -80,12 +79,12 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.tvOS' ">
     <Mode>Toffee</Mode>
-    <SDK>tvOS</SDK>
+    <SubMode>tvOS</SubMode>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.watchOS' ">
     <Mode>Toffee</Mode>
-    <SDK>watchOS</SDK>
+    <SubMode>watchOS</SubMode>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
     <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
