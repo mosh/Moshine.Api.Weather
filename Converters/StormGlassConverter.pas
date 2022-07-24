@@ -14,6 +14,7 @@ type
 
   StormGlassConverter = public class(IConverter)
   private
+    // metres per second to knots
     const ToKnots:Double = 1.94384;
   private
     _formatter:WeatherApiFormatter;
