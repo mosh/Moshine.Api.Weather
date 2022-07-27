@@ -35,5 +35,11 @@ type
       exit proxy.GetCurrentConditions(location);
     end;
 
+    method GetCompleteCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    begin
+      exit proxy.GetCompleteCurrentConditions(location);
+    end;
+
+
   end;
 end.
