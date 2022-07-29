@@ -36,10 +36,10 @@ type
     begin
       var value := '';
 
-      for x:= 0 to values.length-1 do
+      for x:= 0 to values.Length-1 do
       begin
         value := value + values[x];
-        if(x < values.length -1)then
+        if(x < values.Length -1)then
         begin
           value := value + ',';
         end;
