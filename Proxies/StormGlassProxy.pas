@@ -80,7 +80,7 @@ type
 
     end;
 
-    method GetCompleteCurrentConditions(location:LocationCoordinate2D):ICurrentConditions;
+    method GetCompleteCurrentConditions(location:LocationCoordinate2D):ICompleteCurrentConditions;
     begin
       var request := _provider.ForCompleteCurrentConditions(location);
 
@@ -88,7 +88,7 @@ type
 
       var converter := new StormGlassConverter(_formatter);
 
-      exit converter.ToCurrentConditions(stringValues);
+      exit converter.ToCompleteCurrentConditions(stringValues);
 
     end;
 

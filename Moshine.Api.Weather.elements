@@ -152,6 +152,9 @@
     <Compile Include="Models\Tide.pas" />
     <Compile Include="Models\Station.pas" />
     <Compile Include="Models\StormGlass\Tides.pas" />
+    <Compile Include="Models\ICompleteCurrentConditions.pas" />
+    <Compile Include="Models\StormGlass\CompleteCurrentConditions.pas" />
+    <Compile Include="Models\WeatherValue.pas" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

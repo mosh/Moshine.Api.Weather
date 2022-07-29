@@ -16,6 +16,7 @@ type
   private
     // metres per second to knots
     const ToKnots:Double = 1.94384;
+
   private
     _formatter:WeatherApiFormatter;
 
@@ -43,7 +44,182 @@ type
       _formatter := formatter;
     end;
 
-    method ToCurrentConditions(someJson:String):ICurrentConditions;
+    method ToCompleteCurrentConditions(someJson:String):ICompleteCurrentConditions;
+    begin
+
+      var fullCurrentConditions := PopulateCurrentConditions(someJson, new CompleteCurrentConditions) as CompleteCurrentConditions;
+
+      var document := JsonDocument.FromString(someJson);
+      var rootNode := document.Root;
+
+      var hoursNode := rootNode.Item['hours'] as JsonArray;
+      var hour := hoursNode.First as JsonObject;
+
+      for each key in hour.Keys do
+      begin
+        var item := hour.Item[key];
+
+        case key of
+          'airTemperature':
+            begin
+              for each itemKey in item.Keys do
+              begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.AirTemperature.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+            end;
+          'cloudCover':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.CloudCover.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'humidity':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.Humidity.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'iceCover':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.IceCover.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'precipitation':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.Precipitation.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'pressure':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.Pressure.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'secondarySwellDirection':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SecondarySwellDirection.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'secondarySwellHeight':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SecondarySwellHeight.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'secondarySwellPeriod':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SecondarySwellPeriod.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'snowDepth':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SnowDepth.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'swellDirection':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SwellDirection.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'swellHeight':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SwellHeight.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'swellPeriod':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.SwellPeriod.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'waterTemperature':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.WaterTemperature.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'waveDirection':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.WaveDirection.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'windWaveDirection':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.WindWaveDirection.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'windWaveHeight':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.WindWaveHeight.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+          'windWavePeriod':
+          begin
+              for each itemKey in item.Keys do
+                begin
+                var itemItem := item[itemKey].FloatValue;
+                fullCurrentConditions.WindWavePeriod.Values.Add(new KeyValuePair<String,Double>(itemKey, itemItem));
+              end;
+          end;
+
+
+        end;
+      end;
+
+
+      exit fullCurrentConditions;
+    end;
+
+    method ToCurrentConditions(someJson:String):ICurrentConditions; //{$IFDEF DARWIN} implements IConverter.ToCurrentConditions; {$ENDIF}
+    begin
+
+    end;
+
+
+    method PopulateCurrentConditions(someJson:String; conditions:CurrentConditions):ICurrentConditions;
     begin
 
       var document := JsonDocument.FromString(someJson);
@@ -67,15 +243,18 @@ type
       var windDirectionValue := windDirection.Item['noaa'] as JsonFloatValue;
       var windSpeedValue := windSpeed.Item['noaa'] as JsonFloatValue;
 
-      var current := new CurrentConditions;
+      if(not assigned(conditions))then
+      begin
+        conditions := new CurrentConditions;
+      end;
 
-      current.WindSpeedGusting := _formatter.Format(Double(gustValue) * ToKnots);
-      current.WindSpeed := _formatter.Format(Double(windSpeedValue) * ToKnots);
-      current.WindDirection := Double(windDirectionValue).DegreesToCompass;
-      current.ShortWindAsString := '';
-      current.Weather := '';
+      conditions.WindSpeedGusting := _formatter.Format(Double(gustValue) * ToKnots);
+      conditions.WindSpeed := _formatter.Format(Double(windSpeedValue) * ToKnots);
+      conditions.WindDirection := Double(windDirectionValue).DegreesToCompass;
+      conditions.ShortWindAsString := '';
+      conditions.Weather := '';
 
-      exit current;
+      exit conditions;
 
     end;
 

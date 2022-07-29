@@ -36,10 +36,10 @@ type
     begin
       var value := '';
 
-      for x:= 0 to values.Length-1 do
+      for x:= 0 to values.length-1 do
       begin
         value := value + values[x];
-        if(x < values.Length -1)then
+        if(x < values.length -1)then
         begin
           value := value + ',';
         end;
@@ -50,7 +50,7 @@ type
 
     method ParameterizedForCurrentConditions(location:LocationCoordinate2D; parameters:array of String):Moshine.Foundation.Web.HttpRequest;
     begin
-      var since := DateTime.TimeSinceEpochNow;
+      var since := Math.Round(DateTime.TimeSinceEpochNow,0);
       var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params={ArrayAsString(parameters)}&start={since}&end={since}';
       Log($'{url}');
       exit HttpRequestForStormGlass(url);
@@ -67,8 +67,8 @@ type
     method ParameterizedForForecast(location:LocationCoordinate2D; startTime:DateTime; endTime:DateTime; parameters:array of String):Moshine.Foundation.Web.HttpRequest;
     begin
 
-      var startValue := startTime.TimeSinceEpoch;
-      var endValue := endTime.TimeSinceEpoch;
+      var startValue := Math.Round(startTime.TimeSinceEpoch,0);
+      var endValue := Math.Round(endTime.TimeSinceEpoch,0);
       var url := $'https://api.stormglass.io/v2/weather/point?lat={location.latitude}&lng={location.longitude}&params={ArrayAsString(parameters)}&start={startValue}&end={endValue}';
 
       Log($'{url}');
@@ -123,8 +123,8 @@ type
     begin
       var startTime := DateTime.UtcNow;
       var endTime := startTime.AddHours(24);
-      var startValue := startTime.TimeSinceEpoch;
-      var endValue := endTime.TimeSinceEpoch;
+      var startValue := Math.Round(startTime.TimeSinceEpoch,0);
+      var endValue := Math.Round(endTime.TimeSinceEpoch,0);
 
       var url := $'https://api.stormglass.io/v2/tide/extremes/point?lat={location.latitude}&lng={location.longitude}&start={startValue}&end={endValue}';
       exit HttpRequestForStormGlass(url);
