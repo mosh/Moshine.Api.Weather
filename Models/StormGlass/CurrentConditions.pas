@@ -6,8 +6,8 @@ uses
 type
   CurrentConditions = public class(ICurrentConditions)
   public
-    property WindSpeed:DoubleWeatherValue := new DoubleWeatherValue;
-    property WindSpeedGusting:DoubleWeatherValue := new DoubleWeatherValue;
+    property WindSpeed:AverageDoubleWeatherValue := new AverageDoubleWeatherValue;
+    property WindSpeedGusting:AverageDoubleWeatherValue := new AverageDoubleWeatherValue;
     property WindDirection:StringWeatherValue := new StringWeatherValue;
     property ShortWindAsString:StringWeatherValue := new StringWeatherValue;
     property Weather:StringWeatherValue := new StringWeatherValue;

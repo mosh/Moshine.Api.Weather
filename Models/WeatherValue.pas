@@ -51,5 +51,28 @@ type
 
   end;
 
+  AverageDoubleWeatherValue = public class(DoubleWeatherValue)
+  public
+
+    [ToString]
+    method ToString:String;
+    begin
+      if(self.Values.Any)then
+      begin
+        var sum:Double := 0;
+        for each value in Values do
+        begin
+          sum := sum + value.Value;
+        end;
+
+        var avg := sum / self.Values.Count;
+
+        exit $'{avg}';
+      end;
+      exit '';
+    end;
+
+  end;
+
 
 end.
