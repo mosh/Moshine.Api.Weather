@@ -6,11 +6,11 @@ uses
 type
   CurrentConditions = public class(ICurrentConditions)
   public
-    property WindSpeed:Double;
-    property WindSpeedGusting:Double;
-    property WindDirection:String;
-    property ShortWindAsString:String;
-    property Weather:String;
+    property WindSpeed:DoubleWeatherValue := new DoubleWeatherValue;
+    property WindSpeedGusting:DoubleWeatherValue := new DoubleWeatherValue;
+    property WindDirection:StringWeatherValue := new StringWeatherValue;
+    property ShortWindAsString:StringWeatherValue := new StringWeatherValue;
+    property Weather:StringWeatherValue := new StringWeatherValue;
 
   end;
 

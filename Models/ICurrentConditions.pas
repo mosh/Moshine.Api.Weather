@@ -2,11 +2,12 @@
 
 type
   ICurrentConditions = public interface
-    property WindSpeed:Double read;
-    property WindSpeedGusting:Double read;
-    property WindDirection:String read;
-    property ShortWindAsString:String read;
-    property Weather:String read;
+
+    property WindSpeed:DoubleWeatherValue read;
+    property WindSpeedGusting:DoubleWeatherValue read;
+    property WindDirection:StringWeatherValue read;
+    property ShortWindAsString:StringWeatherValue read;
+    property Weather:StringWeatherValue read;
 
   end;
 

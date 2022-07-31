@@ -11,12 +11,44 @@ type
   end;
 
   DoubleWeatherValue = public class(WeatherValue<Double>)
+  public
+    [ToString]
+    method ToString:String;
+    begin
+      if(self.Values.Any)then
+      begin
+        exit self.Values.First.Value.ToString;
+      end;
+      exit '';
+    end;
   end;
 
   StringWeatherValue = public class(WeatherValue<String>)
+  public
+    [ToString]
+    method ToString:String;
+    begin
+      if(self.Values.Any)then
+      begin
+        exit self.Values.First.Value.ToString;
+      end;
+      exit '';
+    end;
   end;
 
   IntegerWeatherValue = public class(WeatherValue<Integer>)
+  public
+
+    [ToString]
+    method ToString:String;
+    begin
+      if(self.Values.Any)then
+      begin
+        exit self.Values.First.Value.ToString;
+      end;
+      exit '';
+    end;
+
   end;
 
 

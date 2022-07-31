@@ -215,7 +215,7 @@ type
 
     method ToCurrentConditions(someJson:String):ICurrentConditions; //{$IFDEF DARWIN} implements IConverter.ToCurrentConditions; {$ENDIF}
     begin
-
+      exit PopulateCurrentConditions(someJson, new CurrentConditions);
     end;
 
 
@@ -239,20 +239,39 @@ type
       var windDirection := hour.Item['windDirection'] as JsonObject;
       var windSpeed := hour.Item['windSpeed'] as JsonObject;
 
-      var gustValue := gust.Item['noaa'] as JsonFloatValue;
-      var windDirectionValue := windDirection.Item['noaa'] as JsonFloatValue;
-      var windSpeedValue := windSpeed.Item['noaa'] as JsonFloatValue;
+      for each key in gust.Keys do
+      begin
+        var value := gust.Item[key] as JsonFloatValue;
+
+        conditions.WindSpeedGusting.Values.Add(
+          new KeyValuePair<String,Double>(key, _formatter.Format(Double(value) * ToKnots)));
+      end;
+
+      for each key in windDirection.Keys do
+      begin
+        var value := windDirection.Item[key] as JsonFloatValue;
+
+        conditions.WindDirection.Values.Add(
+          new KeyValuePair<String,String>(key, Double(value).DegreesToCompass));
+
+      end;
+
+      for each key in windSpeed.Keys do
+        begin
+        var value := windSpeed.Item[key] as JsonFloatValue;
+
+        conditions.WindSpeed.Values.Add(
+          new KeyValuePair<String,Double>(key, _formatter.Format(Double(value) * ToKnots)));
+
+      end;
 
       if(not assigned(conditions))then
       begin
         conditions := new CurrentConditions;
       end;
 
-      conditions.WindSpeedGusting := _formatter.Format(Double(gustValue) * ToKnots);
-      conditions.WindSpeed := _formatter.Format(Double(windSpeedValue) * ToKnots);
-      conditions.WindDirection := Double(windDirectionValue).DegreesToCompass;
-      conditions.ShortWindAsString := '';
-      conditions.Weather := '';
+      //conditions.ShortWindAsString := '';
+      //conditions.Weather := '';
 
       exit conditions;
 
