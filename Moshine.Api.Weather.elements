@@ -45,11 +45,6 @@
     <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.tvOS' ">
-    <Mode>Island</Mode>
-    <SubMode>Darwin</SubMode>
-    <SDK>tvOS</SDK>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.watchOS' ">
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
@@ -77,11 +72,6 @@
     <GenerateBitcode>True</GenerateBitcode>
     <Architecture>all</Architecture>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Target)' == 'Toffee.tvOS' ">
-    <Mode>Toffee</Mode>
-    <SubMode>tvOS</SubMode>
-    <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.watchOS' ">
     <Mode>Toffee</Mode>
     <SubMode>watchOS</SubMode>
@@ -92,9 +82,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="#" />
-    <Reference Include="Elements">
-      <Private>True</Private>
-    </Reference>
     <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/Moshine.Foundation.elements:*">
       <Private>True</Private>
     </RemoteProjectReference>

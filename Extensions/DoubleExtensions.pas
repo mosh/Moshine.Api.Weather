@@ -11,7 +11,6 @@ type
       var arr := ['N','NNE','NE','ENE','E','ESE', 'SE', 'SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
       exit arr[(val mod 16)];
     end;
-
   end;
 
 end.
