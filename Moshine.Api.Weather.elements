@@ -82,7 +82,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="#" />
-    <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/Moshine.Foundation.elements:*">
+    <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/Moshine.Foundation.Contracts/Moshine.Foundation.Contracts.elements:*">
+      <Private>True</Private>
+    </RemoteProjectReference>
+    <RemoteProjectReference Include="github.com/Mosh/Moshine.Foundation/Moshine.Foundation/Moshine.Foundation.elements:*">
       <Private>True</Private>
     </RemoteProjectReference>
     <RemoteProjectReference Include="github.com/Mosh/Moshine.Location/Moshine.Api.Location/Moshine.Api.Location.elements:Main">
