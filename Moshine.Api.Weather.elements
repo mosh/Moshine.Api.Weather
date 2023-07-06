@@ -23,18 +23,11 @@
     <ConditionalDefines>NETCORE</ConditionalDefines>
     <OutputType>Library</OutputType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Target)' == 'Echoes.Standard' ">
-    <Mode>Echoes</Mode>
-    <TargetFramework>.NETStandard2.0</TargetFramework>
-    <ConditionalDefines>NETSTANDARD</ConditionalDefines>
-    <OutputType>Library</OutputType>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.macOS' ">
     <Mode>Island</Mode>
     <SubMode>Darwin</SubMode>
     <SDK>macOS</SDK>
     <GenerateBitcode>True</GenerateBitcode>
-    <Architecture>all</Architecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.iOS' ">
     <Mode>Island</Mode>
@@ -42,7 +35,6 @@
     <SDK>iOS</SDK>
     <SupportMacCatalyst>False</SupportMacCatalyst>
     <GenerateBitcode>True</GenerateBitcode>
-    <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Darwin.watchOS' ">
@@ -50,7 +42,6 @@
     <SubMode>Darwin</SubMode>
     <SDK>watchOS</SDK>
     <GenerateBitcode>True</GenerateBitcode>
-    <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Island.Linux' ">
@@ -62,7 +53,6 @@
     <SubMode>iOS</SubMode>
     <SupportMacCatalyst>False</SupportMacCatalyst>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
-    <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.macOS' ">
@@ -70,14 +60,12 @@
     <SDK>macOS</SDK>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
     <GenerateBitcode>True</GenerateBitcode>
-    <Architecture>all</Architecture>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Target)' == 'Toffee.watchOS' ">
     <Mode>Toffee</Mode>
     <SubMode>watchOS</SubMode>
     <DefaultUses>Foundation;RemObjects.Elements.Linq</DefaultUses>
     <GenerateBitcode>True</GenerateBitcode>
-    <Architecture>all</Architecture>
     <SimulatorArchitecture>all</SimulatorArchitecture>
   </PropertyGroup>
   <ItemGroup>
